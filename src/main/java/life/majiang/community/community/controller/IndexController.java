@@ -5,12 +5,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * Created by liumq on 2020/03/21
+ */
 @Controller
-public class HelloController {
+public class IndexController {
 
-    @GetMapping("/greeting")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "greeting";
+    @GetMapping("/")
+    public String greeting() {
+        return "index";
     }
 }
