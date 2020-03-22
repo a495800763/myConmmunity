@@ -10,6 +10,7 @@ this is my community demo
 ## 快捷键记录
 ctrl+alt+v ： 自动抽取变量  
 ctrl+shift+F12： 最大化代码编辑界面  
+tab: html 页面自动补全标签
 
 ## 脚本  
 ```sql
@@ -21,6 +22,7 @@ CREATE TABLE `user` (
   `token` char(36) DEFAULT NULL,
   `gmt_create` bigint(20) DEFAULT NULL,
   `gmt_modified` bigint(20) DEFAULT NULL,
+  `bio` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
