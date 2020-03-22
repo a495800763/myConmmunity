@@ -11,7 +11,7 @@ this is my community demo
 ctrl+alt+v ： 自动抽取变量  
 ctrl+shift+F12： 最大化代码编辑界面  
 
-##脚本
+## 脚本  
 ```sql
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
