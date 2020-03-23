@@ -23,6 +23,7 @@ public class User {
                 ", gmtCreate=" + gmtCreate +
                 ", gmtModified=" + gmtModified +
                 ", bio='" + bio + '\'' +
+                ", avatarUrl='" + avatarUrl + '\'' +
                 '}';
     }
 }
