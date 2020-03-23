@@ -60,9 +60,9 @@ public class AuthorizeController {
             user.setAccountId(String.valueOf(githubUseruser.getId()));
             user.setGmtCreate(System.currentTimeMillis());
             user.setGmtModified(user.getGmtCreate());
+            user.setAvatarUrl(githubUseruser.getAvatar_url());
             userMapper.insert(user);
             response.addCookie(new Cookie("token",token));
-            //request.getSession().setAttribute("user",githubUseruser);
             return "redirect:/";
             //登录成功 写cookie 和session
         }else{
