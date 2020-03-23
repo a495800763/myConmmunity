@@ -7,7 +7,6 @@ import life.majiang.community.community.model.Question;
 import life.majiang.community.community.model.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
