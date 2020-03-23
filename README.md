@@ -5,7 +5,8 @@ this is my community demo copy from codedrinker
 
 ## 资料
 [github OAuth ](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)  
-[bootstrap](https://v3.bootcss.com/css/)
+[bootstrap](https://v3.bootcss.com/css/)  
+[thymeleaf](https://www.thymeleaf.org/)
 
 ## 快捷键记录
 ctrl+alt+v ： 自动抽取变量  
