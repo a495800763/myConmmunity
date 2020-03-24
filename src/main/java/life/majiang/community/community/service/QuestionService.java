@@ -98,4 +98,8 @@ public class QuestionService {
         return paginationDTO;
 
     }
+
+    public QuestionDTO getById(Integer id) {
+        return null;
+    }
 }
