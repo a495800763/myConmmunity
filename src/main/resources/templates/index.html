@@ -20,11 +20,13 @@
             <div class="media" th:each=" question : ${pagination.questions}">
                 <div class="media-left">
                     <a href="#" class="media-object">
-                        <img class="media-object img-circle" th:src="${question.getUser().getAvatarUrl()}">
+                        <img class="img-circle media-object" th:src="${question.getUser().getAvatarUrl()}">
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading" th:text="${question.getTitle()}"></h4>
+                    <h4 class="media-heading">
+                        <a th:href="@{'/question/'+${question.id}}" th:text="${question.getTitle()}"></a>
+                    </h4>
                     <span th:text="${question.getDescription()}"></span><br>
                     <span class="text-desc"> <span th:text="${question.getCommentCount()}"
                                                    th:if="${question.getCommentCount()!=null}"></span> <span

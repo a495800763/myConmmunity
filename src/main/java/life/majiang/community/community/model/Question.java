@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class Question {
+    private Integer id ;
     private String title;
     private String description;
     private Long gmtCreate;
@@ -14,11 +15,11 @@ public class Question {
     private Integer likeCount;
     private String tag;
 
-
     @Override
     public String toString() {
         return "Question{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", gmtCreate=" + gmtCreate +
                 ", gmtModified=" + gmtModified +
