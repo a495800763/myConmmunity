@@ -4,12 +4,14 @@ this is my community demo copy from codedrinker
 ## 工具
 
 ## 资料
+[SpringMVC](https://docs.spring.io/spring/docs/5.2.4.RELEASE/spring-framework-reference/web.html#spring-web)  
+[Spring Boot](https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/)  
+[thymeleaf](https://www.thymeleaf.org/)  
 [github OAuth ](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)  
 [bootstrap](https://v3.bootcss.com/css/)  
-[thymeleaf](https://www.thymeleaf.org/)  
 [JQuery](jquert.com)  
-[SpringMVC](https://docs.spring.io/spring/docs/5.2.4.RELEASE/spring-framework-reference/web.html#spring-web)  
-[MyBatis Generator](http://mybatis.org/generator/)
+[MyBatis Generator](http://mybatis.org/generator/)  
+
 
 ## 快捷键记录
 ctrl+alt+v ： 自动抽取变量  
