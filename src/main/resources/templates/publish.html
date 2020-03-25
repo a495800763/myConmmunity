@@ -3,11 +3,11 @@
 <head>
     <title>发布--码匠社区</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/community.css">
-    <script src="jquery/3.1.1/jquery.js"></script>
-    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/bootstrap-3.3.7-dist/css/community.css">
+    <script src="/jquery/3.1.1/jquery.js"></script>
+    <script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 </head>
 <body style="background-color: #EFEFEF">
 <div th:insert="~{navigation::nav}"></div>
@@ -17,6 +17,7 @@
             <h3><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</h3>
             <hr>
             <form action="/publish" method="post">
+                <input type="hidden" name ="id" th:value="${id}">
                 <div class="form-group">
                     <label for="title">问题标题(简单扼要)：</label>
                     <input type="text" class="form-control" id="title" name="title"  th:value="${title}" placeholder="问题标题...">
