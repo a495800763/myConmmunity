@@ -117,6 +117,9 @@ public class QuestionService {
             //创建新的问题
             question.setGmtCreate(System.currentTimeMillis());
             question.setGmtModified(question.getGmtCreate());
+            question.setViewCount(DEFAULT_COUNT);
+            question.setCommentCount(DEFAULT_COUNT);
+            question.setLikeCount(DEFAULT_COUNT);
             questionMapper.create(question);
         }
         else{
@@ -126,4 +129,12 @@ public class QuestionService {
 
         }
     }
+
+
+    public void addViewCount(Integer id)
+    {
+        questionMapper.addViewCount (id);
+    }
+
+    private static  final  Integer DEFAULT_COUNT=0;
 }

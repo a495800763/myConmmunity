@@ -9,7 +9,7 @@ this is my community demo copy from codedrinker
 [thymeleaf](https://www.thymeleaf.org/)  
 [JQuery](jquert.com)  
 [SpringMVC](https://docs.spring.io/spring/docs/5.2.4.RELEASE/spring-framework-reference/web.html#spring-web)  
-
+[MyBatis Generator](http://mybatis.org/generator/)
 
 ## 快捷键记录
 ctrl+alt+v ： 自动抽取变量  
