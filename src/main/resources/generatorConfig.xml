@@ -6,6 +6,8 @@
 <generatorConfiguration>
     <classPathEntry  location="E:\mavenRepo\repo\mysql\mysql-connector-java\5.1.29\mysql-connector-java-5.1.29.jar"/>
     <context id="DB2Tables" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
+
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/community"
                         userId="root"
