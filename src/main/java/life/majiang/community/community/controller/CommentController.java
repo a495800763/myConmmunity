@@ -2,11 +2,13 @@ package life.majiang.community.community.controller;
 
 import life.majiang.community.community.dto.CommentDTO;
 import life.majiang.community.community.dto.ResultDTO;
+import life.majiang.community.community.enums.CommentTypeEnum;
 import life.majiang.community.community.exception.CustomizeErrorCode;
 import life.majiang.community.community.mapper.CommentMapper;
 import life.majiang.community.community.model.Comment;
 import life.majiang.community.community.model.User;
 import life.majiang.community.community.service.CommentService;
+import life.majiang.community.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +30,8 @@ import java.util.Map;
 public class CommentController {
     @Autowired
     private CommentService commentService;
+    @Autowired
+    private QuestionService questionService;
 
     @ResponseBody
     @RequestMapping(value = "/comment", method = RequestMethod.POST)
@@ -36,7 +40,7 @@ public class CommentController {
         User user = (User) request.getSession().getAttribute("user");
 
         if (user == null) {
-             return ResultDTO.errorOf(CustomizeErrorCode.NO_LOGIN);
+            return ResultDTO.errorOf(CustomizeErrorCode.NO_LOGIN);
         }
         Comment comment = new Comment();
         comment.setParentId(commentDTO.getParentId());
@@ -47,6 +51,10 @@ public class CommentController {
         comment.setLikeCount(DEFAULT_LIKE_COUNT);
         comment.setCommentator(user.getId());
         commentService.insert(comment);
+        //更新问题的评论数
+        if (CommentTypeEnum.QUESTION.getType().equals(comment.getType())) {
+            questionService.addCommentCount(comment.getParentId());
+        }
         return ResultDTO.okOf();
 
     }

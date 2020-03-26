@@ -27,9 +27,7 @@ public class CustomizeExceptionHandler {
     public Object handle(HttpServletRequest request, Throwable e, Model model, HttpServletResponse response) {
         String contentType = request.getContentType();
         if ("application/json".equals(contentType)) {
-
             ResultDTO resultDTO = null;
-
             //返回json
             if (e instanceof CustomizeException) {
                 resultDTO = ResultDTO.errorOf((CustomizeException) e);
@@ -55,15 +53,5 @@ public class CustomizeExceptionHandler {
             }
             return new ModelAndView("error");
         }
-
-
     }
-
-   /* private HttpStatus getStatus(HttpServletRequest request) {
-        Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
-        if (statusCode == null) {
-            return HttpStatus.INTERNAL_SERVER_ERROR;
-        }
-        return HttpStatus.valueOf(statusCode);
-    }*/
 }

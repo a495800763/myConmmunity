@@ -34,8 +34,7 @@ public class CommentService {
         if (comment.getType() == null || CommentTypeEnum.isExist(comment.getType())) {
             throw new CustomizeException(CustomizeErrorCode.TYPE_PARAM_WRONG);
         }
-
-        if (comment.getType() == CommentTypeEnum.COMMENT.getType()) {
+        if (CommentTypeEnum.COMMENT.getType().equals(comment.getType())) {
             //回复评论
             Comment dbComment = commentMapper.selectByPrimaryKey(comment.getParentId());
             if (dbComment == null) {
@@ -43,9 +42,12 @@ public class CommentService {
             }
             commentMapper.insert(comment);
         } else {
-            Question question = questionMapper.selectByPrimaryKey(comment.getParentId());
             //回复问题
+            Question question = questionMapper.selectByPrimaryKey(comment.getParentId());
+            if (question == null) {
+                throw new CustomizeException(CustomizeErrorCode.QUSSTION_NOT_FOUND);
+            }
+            commentMapper.insert(comment);
         }
-
     }
 }

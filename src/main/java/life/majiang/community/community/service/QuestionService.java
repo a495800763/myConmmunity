@@ -155,5 +155,12 @@ public class QuestionService {
         questionMapper.updateByPrimaryKey(question);
     }
 
-    private static final Integer DEFAULT_COUNT = 0;
+     public void addCommentCount(Long id)
+     {
+         Question question = questionMapper.selectByPrimaryKey(id);
+         question.setCommentCount(question.getCommentCount() + 1);
+         questionMapper.updateByPrimaryKey(question);
+     }
+
+  private static final Integer DEFAULT_COUNT = 0;
 }
