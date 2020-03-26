@@ -12,7 +12,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
 
     // EnableWebMvc 会拦截静态资源 配置addResourceHandlers 释放拦截
-
     @Autowired
     private SessionInteceptor sessionInteceptor;
 
