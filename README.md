@@ -31,7 +31,21 @@ CREATE TABLE `user` (
   `bio` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+```
 
+```sql
+
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE `comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) NOT NULL,
+  `type` int(11) DEFAULT NULL,
+  `commentator` int(11) NOT NULL,
+  `gmt_create` bigint(20) NOT NULL,
+  `gmt_modified` bigint(20) DEFAULT NULL,
+  `like_count` bigint(20) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 
 ```bash
