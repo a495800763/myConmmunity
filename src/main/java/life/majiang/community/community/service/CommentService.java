@@ -37,7 +37,7 @@ public class CommentService {
         if (comment.getParentId() == null || comment.getParentId() == 0) {
             throw new CustomizeException(CustomizeErrorCode.TARGET_PARAM_MOT_FOUND);
         }
-        if (comment.getType() == null || CommentTypeEnum.isExist(comment.getType())) {
+        if (comment.getType() == null || !CommentTypeEnum.isExist(comment.getType())) {
             throw new CustomizeException(CustomizeErrorCode.TYPE_PARAM_WRONG);
         }
         if (CommentTypeEnum.COMMENT.getType().equals(comment.getType())) {

@@ -20,7 +20,7 @@
             <div class="media" th:each=" question : ${pagination.questions}">
                 <div class="media-left">
                     <a href="#" class="media-object">
-                        <img class="img-circle media-object" th:src="${question.getUser().getAvatarUrl()}">
+                        <img class="img-rounded media-object" th:src="${question.getUser().getAvatarUrl()}">
                     </a>
                 </div>
                 <div class="media-body">
