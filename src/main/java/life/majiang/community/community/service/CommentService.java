@@ -10,6 +10,7 @@ import life.majiang.community.community.model.Comment;
 import life.majiang.community.community.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @program: community
@@ -29,7 +30,8 @@ public class CommentService {
     @Autowired
     private QuestionExtMapper questionExtMapper;
 
-
+    //整个步骤通过作为一个事务
+    @Transactional
     public void insert(Comment comment) {
 
         if (comment.getParentId() == null || comment.getParentId() == 0) {
