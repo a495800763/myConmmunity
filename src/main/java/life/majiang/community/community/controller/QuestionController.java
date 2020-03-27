@@ -20,8 +20,8 @@ public class QuestionController {
     {
 
         QuestionDTO questionDTO = questionService.getById(id);
-       /* //累加阅读数
-        questionService.addViewCount(id);*/
+    // 累加阅读数
+        questionService.incView(id);
         model.addAttribute("question",questionDTO);
         return "question";
     }

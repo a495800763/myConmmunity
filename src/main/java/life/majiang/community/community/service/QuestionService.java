@@ -4,6 +4,7 @@ import life.majiang.community.community.dto.PaginationDTO;
 import life.majiang.community.community.dto.QuestionDTO;
 import life.majiang.community.community.exception.CustomizeErrorCode;
 import life.majiang.community.community.exception.CustomizeException;
+import life.majiang.community.community.mapper.QuestionExtMapper;
 import life.majiang.community.community.mapper.QuestionMapper;
 import life.majiang.community.community.mapper.UserMapper;
 import life.majiang.community.community.model.Question;
@@ -22,6 +23,9 @@ public class QuestionService {
 
     @Autowired
     private QuestionMapper questionMapper;
+
+    @Autowired
+    private QuestionExtMapper questionExtMapper;
 
     @Autowired
     private UserMapper userMapper;
@@ -149,18 +153,16 @@ public class QuestionService {
     }
 
 
-   /* public void addViewCount(Long id) {
-        Question question = questionMapper.selectByPrimaryKey(id);
-        question.setViewCount(question.getViewCount() + 1);
-        questionMapper.updateByPrimaryKey(question);
-    }*/
-
-    /* public void addCommentCount(Long id)
-     {
-         Question question = questionMapper.selectByPrimaryKey(id);
-         question.setCommentCount(question.getCommentCount() + 1);
-         questionMapper.updateByPrimaryKey(question);
-     }*/
+    public void incView(Long id) {
+        Question question = new Question();
+        question.setId(id);
+        question.setViewCount(DEFAULT_INC_COUNT);
+        questionExtMapper.incView(question);
+    }
 
   private static final Integer DEFAULT_COUNT = 0;
+
+    private static final Integer DEFAULT_INC_COUNT=1;
+
+
 }
