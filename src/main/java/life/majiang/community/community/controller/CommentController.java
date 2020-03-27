@@ -51,10 +51,10 @@ public class CommentController {
         comment.setLikeCount(DEFAULT_LIKE_COUNT);
         comment.setCommentator(user.getId());
         commentService.insert(comment);
-        //更新问题的评论数
+        /*//更新问题的评论数
         if (CommentTypeEnum.QUESTION.getType().equals(comment.getType())) {
             questionService.addCommentCount(comment.getParentId());
-        }
+        }*/
         return ResultDTO.okOf();
 
     }

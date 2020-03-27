@@ -149,18 +149,18 @@ public class QuestionService {
     }
 
 
-    public void addViewCount(Long id) {
+   /* public void addViewCount(Long id) {
         Question question = questionMapper.selectByPrimaryKey(id);
         question.setViewCount(question.getViewCount() + 1);
         questionMapper.updateByPrimaryKey(question);
-    }
+    }*/
 
-     public void addCommentCount(Long id)
+    /* public void addCommentCount(Long id)
      {
          Question question = questionMapper.selectByPrimaryKey(id);
          question.setCommentCount(question.getCommentCount() + 1);
          questionMapper.updateByPrimaryKey(question);
-     }
+     }*/
 
   private static final Integer DEFAULT_COUNT = 0;
 }
