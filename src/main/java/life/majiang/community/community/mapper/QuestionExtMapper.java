@@ -5,5 +5,7 @@ import life.majiang.community.community.model.Question;
 
 public interface QuestionExtMapper {
 
-    int incView (Question record);
+    Integer incView (Question record);
+
+    Integer incComment (Question record);
 }

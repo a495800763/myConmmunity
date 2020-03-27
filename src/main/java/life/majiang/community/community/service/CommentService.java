@@ -4,6 +4,7 @@ import life.majiang.community.community.enums.CommentTypeEnum;
 import life.majiang.community.community.exception.CustomizeErrorCode;
 import life.majiang.community.community.exception.CustomizeException;
 import life.majiang.community.community.mapper.CommentMapper;
+import life.majiang.community.community.mapper.QuestionExtMapper;
 import life.majiang.community.community.mapper.QuestionMapper;
 import life.majiang.community.community.model.Comment;
 import life.majiang.community.community.model.Question;
@@ -24,6 +25,9 @@ public class CommentService {
 
     @Autowired
     private QuestionMapper questionMapper;
+
+    @Autowired
+    private QuestionExtMapper questionExtMapper;
 
 
     public void insert(Comment comment) {
@@ -48,6 +52,10 @@ public class CommentService {
                 throw new CustomizeException(CustomizeErrorCode.QUSSTION_NOT_FOUND);
             }
             commentMapper.insert(comment);
+            question.setCommentCount(DEFAULT_INC_COUNT);
+            questionExtMapper.incComment(question);
         }
     }
+
+    private static final  Integer DEFAULT_INC_COUNT=1;
 }
