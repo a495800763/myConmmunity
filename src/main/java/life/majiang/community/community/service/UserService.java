@@ -34,7 +34,6 @@ public class UserService {
              }
              else{
                  User dbUser = users.get(0);
-
                  User updateUswer =new User();
                  updateUswer.setGmtModified(System.currentTimeMillis());
                  updateUswer.setAvatarUrl(user.getAvatarUrl());

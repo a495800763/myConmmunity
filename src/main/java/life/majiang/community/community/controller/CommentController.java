@@ -6,7 +6,6 @@ import life.majiang.community.community.exception.CustomizeErrorCode;
 import life.majiang.community.community.model.Comment;
 import life.majiang.community.community.model.User;
 import life.majiang.community.community.service.CommentService;
-import life.majiang.community.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,8 +25,6 @@ import javax.servlet.http.HttpServletRequest;
 public class CommentController {
     @Autowired
     private CommentService commentService;
-    @Autowired
-    private QuestionService questionService;
 
     @ResponseBody
     @RequestMapping(value = "/comment", method = RequestMethod.POST)
