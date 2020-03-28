@@ -26,6 +26,8 @@
                 | 作者：<span th:text="${question.getUser().getName()}"></span>
             </span>
                 <hr>
+               <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 问题正文: </div>-->
+                <hr>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" th:text="${question.getDescription()}"></div>
                 <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <a th:href="@{'/publish/'+${question.id}}" class="community-menu"
@@ -37,26 +39,25 @@
             <!--            回复-->
             <h4><span th:text="${question.commentCount}"></span>个回复</h4>
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment-sp">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comments" th:each="comment:${comments}">
                 <div class="media">
                     <div class="media-left">
                         <a href="#" class="media-object">
-                            <img class="img-rounded media-object " th:src="${question.getUser().getAvatarUrl()}">
+                            <img class="img-rounded media-object " th:src="${comment.getUser().getAvatarUrl()}">
                         </a>
                     </div>
                     <div class="media-body">
                         <h5 class="media-heading">
-                            <span th:text="${question.getUser().getName()}"></span>
+                            <span th:text="${comment.getUser().getName()}"></span>
                         </h5>
-                        <div>我是回复内容</div>
-                        <div>
-                            <span class="glyphicon glyphicon-thumbs-up"></span>
-                            <span class="glyphicon glyphicon-comment"></span>
-                            <span class="pull-right" th:text="${#dates.format(question.gmtCreate,'dd MMMM yyyy')}"></span>
+                        <div> <span th:text="${comment.getContent()}"></span> </div>
+                        <div class="menu">
+                            <span class="glyphicon glyphicon-thumbs-up icon"></span>
+                            <span class="glyphicon glyphicon-comment icon"></span>
+                            <span class="pull-right" th:text="${#dates.format(comment.gmtCreate,'dd MMMM yyyy')}"></span>
                         </div>
                     </div>
                 </div>
-
             </div>
             <!--            回复输入框-->
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
