@@ -4,10 +4,7 @@ import life.majiang.community.community.dto.CommentDTO;
 import life.majiang.community.community.enums.CommentTypeEnum;
 import life.majiang.community.community.exception.CustomizeErrorCode;
 import life.majiang.community.community.exception.CustomizeException;
-import life.majiang.community.community.mapper.CommentMapper;
-import life.majiang.community.community.mapper.QuestionExtMapper;
-import life.majiang.community.community.mapper.QuestionMapper;
-import life.majiang.community.community.mapper.UserMapper;
+import life.majiang.community.community.mapper.*;
 import life.majiang.community.community.model.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +38,9 @@ public class CommentService {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private CommentExtMapper commentExtMapper;
+
     //整个步骤通过作为一个事务
     @Transactional
     public void insert(Comment comment) {
@@ -58,6 +58,11 @@ public class CommentService {
                 throw new CustomizeException(CustomizeErrorCode.COMMENT_NOT_FOUND);
             }
             commentMapper.insert(comment);
+            //增加parentComment 的评论数
+            Comment parentComment = new Comment();
+            parentComment.setId(comment.getParentId());
+            parentComment.setCommentCount(DEFAULT_COMMENT_INC_COUNT);
+            commentExtMapper.incComment(parentComment);
         } else {
             //回复问题
             Question question = questionMapper.selectByPrimaryKey(comment.getParentId());
@@ -71,6 +76,7 @@ public class CommentService {
     }
 
     private static final Integer DEFAULT_INC_COUNT = 1;
+    private static final Long DEFAULT_COMMENT_INC_COUNT = 1L;
 
     public List<CommentDTO> listByTargetid(Long id, CommentTypeEnum type) {
         CommentExample commentExample = new CommentExample();
@@ -104,7 +110,6 @@ public class CommentService {
                 commentDTO.setUser(userMap.get(comment.getCommentator()));
                 return commentDTO;
             }).collect(Collectors.toList());
-
             return commentDTOS;
         }
 
