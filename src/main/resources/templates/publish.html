@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/bootstrap-3.3.7-dist/css/community.css">
     <script src="/jquery/3.1.1/jquery.js"></script>
     <script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/bootstrap-3.3.7-dist/js/community.js"></script>
 </head>
 <body style="background-color: #EFEFEF">
 <div th:insert="~{navigation::nav}"></div>
@@ -17,24 +18,67 @@
             <h3><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</h3>
             <hr>
             <form action="/publish" method="post">
-                <input type="hidden" name ="id" th:value="${id}">
+                <input type="hidden" name="id" th:value="${id}">
                 <div class="form-group">
                     <label for="title">问题标题(简单扼要)：</label>
-                    <input type="text" class="form-control" id="title" name="title"  th:value="${title}" placeholder="问题标题...">
+                    <input type="text" class="form-control" id="title" name="title" th:value="${title}"
+                           placeholder="问题标题..." autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="description">问题补充 ：</label>
-                    <textarea class="form-control" name="description" id="description" th:text="${description}" cols="30" rows="10"></textarea>
+                    <textarea class="form-control" name="description" id="description" th:text="${description}"
+                              cols="30" rows="10"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="tag">添加标签：</label>
-                    <input type="text" class="form-control" id="tag" name="tag" th:value="${tag}" placeholder="输入标签，以“，”隔开">
+                    <input type="text" class="form-control" id="tag" name="tag"
+                           th:value="${tag}"
+                           autocomplete="off"
+                           placeholder="输入标签，以“，”隔开"
+                           onclick="showSelectTag()">
+                    <div id="select-tag" class="publish-tag-tab">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#language" aria-controls="language" role="tab"
+                                                                          data-toggle="tab">开发语言</a></li>
+                                <li role="presentation"><a href="#platform" aria-controls="platform" role="tab"
+                                                           data-toggle="tab">平台框架</a></li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="language">
+                                    <span class="label label-info">
+                                    <span class="glyphicon glyphicon-tags" onclick="selectTag('C#')">  C#</span>
+                                    </span>
+                                    <span class="label label-info">
+                                    <span class="glyphicon glyphicon-tags" onclick="selectTag('Java')">  Java</span>
+                                    </span>
+                                    <span class="label label-info">
+                                   <span class="glyphicon glyphicon-tags" onclick="selectTag('c++')">  c</span>
+                                   </span>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="platform">
+                                    <span class="label label-info">
+                                    <span class="glyphicon glyphicon-tags" onclick="selectTag('Spring')">  Spring</span>
+                                    </span>
+                                    <span class="label label-info">
+                                    <span class="glyphicon glyphicon-tags" onclick="selectTag('SpringBoot')">  SpringBoot</span>
+                                    </span>
+                                    <span class="label label-info">
+                                   <span class="glyphicon glyphicon-tags" onclick="selectTag('Vue')">  Vue</span>
+                                   </span>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="messages">...</div>
+                                <div role="tabpanel" class="tab-pane" id="settings">...</div>
+                            </div>
+                    </div>
                 </div>
 
                 <div class="container-fluid main">
                     <div class="row">
-                        <div class=" col-lg-9 col-md-12 col-sm-12 col-xs-12" >
-                            <div class="alert alert-danger col-lg-12 col-md-12 col-sm-12 col-xs-12 " th:text="${error}" th:if="${error!=null}"></div>
+                        <div class=" col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                            <div class="alert alert-danger col-lg-12 col-md-12 col-sm-12 col-xs-12 " th:text="${error}"
+                                 th:if="${error!=null}"></div>
                         </div>
                         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                             <button type="submit"

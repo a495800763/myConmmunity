@@ -49,7 +49,11 @@ line-height: 20px;
 
 .question-wechat{
     width:75%;
+}
 
+.publish-tag-tab{
+    display: none;
+    margin-top: 10px;
 }
 
 .community-menu {
