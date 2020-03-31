@@ -1,9 +1,11 @@
 package life.majiang.community.community.controller;
 
 import life.majiang.community.community.dto.QuestionDTO;
+import life.majiang.community.community.dto.TagDTO;
 import life.majiang.community.community.model.Question;
 import life.majiang.community.community.model.User;
 import life.majiang.community.community.service.QuestionService;
+import life.majiang.community.community.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,12 +15,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class PublishController {
 
     @Autowired
     private QuestionService questionService;
+
+    @Autowired
+    private TagService tagService;
 
     @GetMapping("/publish/{id}")
     public String edit(@PathVariable(name = "id") Long id, Model model) {
@@ -28,14 +34,17 @@ public class PublishController {
         model.addAttribute("description", question.getDescription());
         model.addAttribute("tag", question.getTag());
         model.addAttribute("id", question.getId());
-        model.addAttribute("tags","");
+        List<TagDTO> tagDTO = tagService.getTagDTO();
+        model.addAttribute("tags",tagDTO);
 
         return "publish";
     }
 
 
     @GetMapping("/publish")
-    public String publish() {
+    public String publish(Model model) {
+        List<TagDTO> tagDTO = tagService.getTagDTO();
+        model.addAttribute("tags",tagDTO);
         return "publish";
     }
 
@@ -52,6 +61,8 @@ public class PublishController {
         model.addAttribute("title", title);
         model.addAttribute("description", description);
         model.addAttribute("tag", tag);
+        List<TagDTO> tagDTO = tagService.getTagDTO();
+        model.addAttribute("tags",tagDTO);
         if (title == null || title == "") {
             model.addAttribute("error", "标题不能为空");
             return "publish";
