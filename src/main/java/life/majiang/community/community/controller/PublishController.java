@@ -6,6 +6,7 @@ import life.majiang.community.community.model.Question;
 import life.majiang.community.community.model.User;
 import life.majiang.community.community.service.QuestionService;
 import life.majiang.community.community.service.TagService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +36,7 @@ public class PublishController {
         model.addAttribute("tag", question.getTag());
         model.addAttribute("id", question.getId());
         List<TagDTO> tagDTO = tagService.getTagDTO();
-        model.addAttribute("tags",tagDTO);
+        model.addAttribute("tags", tagDTO);
 
         return "publish";
     }
@@ -44,16 +45,16 @@ public class PublishController {
     @GetMapping("/publish")
     public String publish(Model model) {
         List<TagDTO> tagDTO = tagService.getTagDTO();
-        model.addAttribute("tags",tagDTO);
+        model.addAttribute("tags", tagDTO);
         return "publish";
     }
 
     @PostMapping("/publish")
     public String doPublish(
-            @RequestParam(value = "title",required = false) String title,
-            @RequestParam(value = "description",required = false) String description,
-            @RequestParam(value = "tag",required = false) String tag,
-            @RequestParam(value = "id",required = false) Long id,
+            @RequestParam(value = "title", required = false) String title,
+            @RequestParam(value = "description", required = false) String description,
+            @RequestParam(value = "tag", required = false) String tag,
+            @RequestParam(value = "id", required = false) Long id,
             HttpServletRequest request,
             Model model
     ) {
@@ -62,7 +63,7 @@ public class PublishController {
         model.addAttribute("description", description);
         model.addAttribute("tag", tag);
         List<TagDTO> tagDTO = tagService.getTagDTO();
-        model.addAttribute("tags",tagDTO);
+        model.addAttribute("tags", tagDTO);
         if (title == null || title == "") {
             model.addAttribute("error", "标题不能为空");
             return "publish";
@@ -74,6 +75,12 @@ public class PublishController {
         }
         if (tag == null || tag == "") {
             model.addAttribute("error", "标签不能为空");
+            return "publish";
+        }
+
+        String invalid = tagService.filterInvalid(tag);
+        if (StringUtils.isNotBlank(invalid)) {
+            model.addAttribute("error", "输入非法标签：" + invalid);
             return "publish";
         }
 

@@ -1,6 +1,7 @@
 package life.majiang.community.community.cache;
 
 import life.majiang.community.community.dto.TagDTO;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +14,6 @@ import java.util.List;
  * @create: 2020-03-30 16:14
  **/
 public class TagCache {
-
     public List<TagDTO>  get(){
        List<TagDTO> tagDTOS = new ArrayList<>();
         TagDTO program = new TagDTO();
@@ -22,4 +22,5 @@ public class TagCache {
         tagDTOS.add(program);
        return tagDTOS;
     }
+
 }

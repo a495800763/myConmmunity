@@ -7,9 +7,11 @@ import life.majiang.community.community.model.Tag;
 import life.majiang.community.community.model.TagCategory;
 import life.majiang.community.community.model.TagCategoryExample;
 import life.majiang.community.community.model.TagExample;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -47,5 +49,15 @@ public class TagService {
         }).collect(Collectors.toList());
 
         return tagDTOS;
+    }
+
+
+    public String filterInvalid(String tags) {
+        String[] split = StringUtils.split(tags, ",");
+        List<TagDTO> tagDTOS = getTagDTO();
+        List<String> tagList = tagDTOS.stream().flatMap(tag -> tag.getTags().stream()).collect(Collectors.toList());
+        String invalidTags = Arrays.stream(split).filter(t -> !tagList.contains(t)).collect(Collectors.joining(","));
+
+        return invalidTags;
     }
 }

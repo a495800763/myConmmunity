@@ -37,39 +37,18 @@
                            placeholder="输入标签，以“，”隔开"
                            onclick="showSelectTag()">
                     <div id="select-tag" class="publish-tag-tab">
-                            &lt;!&ndash; Nav tabs &ndash;&gt;
                             <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#language" aria-controls="language" role="tab"
-                                                                          data-toggle="tab">开发语言</a></li>
-                                <li role="presentation"><a href="#platform" aria-controls="platform" role="tab"
-                                                           data-toggle="tab">平台框架</a></li>
+                                <li role="presentation" th:each="selectCategory:${tags}">
+                                    <a th:href="${'#'+selectCategory.getCategoryName()}" aria-controls="language" role="tab"
+                                       data-toggle="tab" th:text="${selectCategory.getCategoryName()}">
+                                    </a></li>
                             </ul>
-                            &lt;!&ndash; Tab panes &ndash;&gt;
                             <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="language">
-                                    <span class="label label-info">
-                                    <span class="glyphicon glyphicon-tags" onclick="selectTag('C#')">  C#</span>
+                                <div role="tabpanel" class="tab-pane" th:id="${selectCategory.getCategoryName()}" th:each="selectCategory:${tags}">
+                                    <span class="label label-info" th:each="selectTag:${selectCategory.getTags()}">
+                                    <span class="glyphicon glyphicon-tags" onclick="selectTag(this)" th:data-tag="${selectTag}" th:text="${selectTag}"></span>
                                     </span>
-                                    <span class="label label-info">
-                                    <span class="glyphicon glyphicon-tags" onclick="selectTag('Java')">  Java</span>
-                                    </span>
-                                    <span class="label label-info">
-                                   <span class="glyphicon glyphicon-tags" onclick="selectTag('c++')">  c</span>
-                                   </span>
                                 </div>
-                                <div role="tabpanel" class="tab-pane" id="platform">
-                                    <span class="label label-info">
-                                    <span class="glyphicon glyphicon-tags" onclick="selectTag('Spring')">  Spring</span>
-                                    </span>
-                                    <span class="label label-info">
-                                    <span class="glyphicon glyphicon-tags" onclick="selectTag('SpringBoot')">  SpringBoot</span>
-                                    </span>
-                                    <span class="label label-info">
-                                   <span class="glyphicon glyphicon-tags" onclick="selectTag('Vue')">  Vue</span>
-                                   </span>
-                                </div>
-                                <div role="tabpanel" class="tab-pane" id="messages">...</div>
-                                <div role="tabpanel" class="tab-pane" id="settings">...</div>
                             </div>
                     </div>
                 </div>
