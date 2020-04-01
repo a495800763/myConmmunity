@@ -2,6 +2,8 @@ package life.majiang.community.community.service;
 
 import life.majiang.community.community.dto.CommentDTO;
 import life.majiang.community.community.enums.CommentTypeEnum;
+import life.majiang.community.community.enums.NotificationStatusEnum;
+import life.majiang.community.community.enums.NotificationTypeEnum;
 import life.majiang.community.community.exception.CustomizeErrorCode;
 import life.majiang.community.community.exception.CustomizeException;
 import life.majiang.community.community.mapper.*;
@@ -41,6 +43,13 @@ public class CommentService {
     @Autowired
     private CommentExtMapper commentExtMapper;
 
+    @Autowired
+    private NotificationMapper notificationMapper;
+
+    /**
+     * 插入评论
+     * @param comment
+     */
     //整个步骤通过作为一个事务
     @Transactional
     public void insert(Comment comment) {
@@ -63,6 +72,10 @@ public class CommentService {
             parentComment.setId(comment.getParentId());
             parentComment.setCommentCount(DEFAULT_COMMENT_INC_COUNT);
             commentExtMapper.incComment(parentComment);
+            //创建通知
+            createNotifiy(comment,dbComment.getCommentator(),NotificationTypeEnum.REPLY_COMMENT.getType());
+
+
         } else {
             //回复问题
             Question question = questionMapper.selectByPrimaryKey(comment.getParentId());
@@ -72,12 +85,38 @@ public class CommentService {
             commentMapper.insert(comment);
             question.setCommentCount(DEFAULT_INC_COUNT);
             questionExtMapper.incComment(question);
+
+            //创建通知
+            createNotifiy(comment,question.getCreator(),NotificationTypeEnum.REPLY_QUESTION.getType());
+
         }
     }
 
-    private static final Integer DEFAULT_INC_COUNT = 1;
-    private static final Long DEFAULT_COMMENT_INC_COUNT = 1L;
+    /**
+     * 创建通知
+     * @param comment 评论对象
+     * @param receiver 通知接受者
+     * @param type  通知类型
+     */
+    private void createNotifiy(Comment comment,Long receiver,Integer type) {
+        Notification notification = new Notification();
+        notification.setGmtCreate(System.currentTimeMillis());
+        notification.setType(type);
+        notification.setOuterid(comment.getParentId());
+        notification.setNotifier(comment.getCommentator());
+        notification.setStatus(NotificationStatusEnum.UNREAD.getStatus());
+        notification.setReceiver(receiver);
+        notificationMapper.insert(notification);
+    }
 
+
+
+    /**
+     * 根据目标类型去获得列表
+     * @param id
+     * @param type
+     * @return
+     */
     public List<CommentDTO> listByTargetid(Long id, CommentTypeEnum type) {
         CommentExample commentExample = new CommentExample();
         commentExample.createCriteria()
@@ -114,4 +153,7 @@ public class CommentService {
         }
 
     }
+
+    private static final Integer DEFAULT_INC_COUNT = 1;
+    private static final Long DEFAULT_COMMENT_INC_COUNT = 1L;
 }
