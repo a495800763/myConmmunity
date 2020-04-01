@@ -73,7 +73,7 @@ public class CommentService {
             parentComment.setCommentCount(DEFAULT_COMMENT_INC_COUNT);
             commentExtMapper.incComment(parentComment);
             //创建通知
-            createNotifiy(comment,dbComment.getCommentator(),NotificationTypeEnum.REPLY_COMMENT.getType());
+            createNotifiy(comment,dbComment.getCommentator(),NotificationTypeEnum.REPLY_COMMENT);
 
 
         } else {
@@ -87,7 +87,7 @@ public class CommentService {
             questionExtMapper.incComment(question);
 
             //创建通知
-            createNotifiy(comment,question.getCreator(),NotificationTypeEnum.REPLY_QUESTION.getType());
+            createNotifiy(comment,question.getCreator(),NotificationTypeEnum.REPLY_QUESTION);
 
         }
     }
@@ -96,20 +96,18 @@ public class CommentService {
      * 创建通知
      * @param comment 评论对象
      * @param receiver 通知接受者
-     * @param type  通知类型
+     * @param notificationTypeEnum  通知类型
      */
-    private void createNotifiy(Comment comment,Long receiver,Integer type) {
+    private void createNotifiy(Comment comment,Long receiver,NotificationTypeEnum notificationTypeEnum) {
         Notification notification = new Notification();
         notification.setGmtCreate(System.currentTimeMillis());
-        notification.setType(type);
+        notification.setType(notificationTypeEnum.getType());
         notification.setOuterid(comment.getParentId());
         notification.setNotifier(comment.getCommentator());
         notification.setStatus(NotificationStatusEnum.UNREAD.getStatus());
         notification.setReceiver(receiver);
         notificationMapper.insert(notification);
     }
-
-
 
     /**
      * 根据目标类型去获得列表
