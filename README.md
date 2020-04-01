@@ -11,12 +11,15 @@ this is my community demo copy from codedrinker
 [bootstrap](https://v3.bootcss.com/css/)  
 [JQuery](jquert.com)  
 [MyBatis Generator](http://mybatis.org/generator/)  
+[SegmentFault](https://segmentfault.com/)  
+
 
 
 ## 快捷键记录
-ctrl+alt+v ： 自动抽取变量  
+ctrl+alt+v： 自动抽取变量  
 ctrl+shift+F12： 最大化代码编辑界面  
-tab: html 页面自动补全标签
+tab: html： 页面自动补全标签  
+ctrl+shift+M：选中代码抽方法
 
 ## 脚本  
 ```sql
