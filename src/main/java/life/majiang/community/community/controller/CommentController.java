@@ -49,7 +49,7 @@ public class CommentController {
         comment.setGmtModified(comment.getGmtCreate());
         comment.setLikeCount(DEFAULT_LIKE_COUNT);
         comment.setCommentator(user.getId());
-        commentService.insert(comment);
+        commentService.insert(comment,user);
         return ResultDTO.okOf();
 
     }

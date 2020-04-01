@@ -24,4 +24,13 @@ public enum NotificationTypeEnum {
     public int getType() {
         return type;
     }
+
+    public static String nameOfType(int type) {
+        for (NotificationTypeEnum notificationTypeEnum : NotificationTypeEnum.values()) {
+            if (notificationTypeEnum.getType() == type) {
+                return notificationTypeEnum.getName();
+            }
+        }
+        return "";
+    }
 }

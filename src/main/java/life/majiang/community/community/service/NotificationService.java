@@ -2,9 +2,11 @@ package life.majiang.community.community.service;
 
 import life.majiang.community.community.dto.NotificationDTO;
 import life.majiang.community.community.dto.PaginationDTO;
-import life.majiang.community.community.dto.QuestionDTO;
+import life.majiang.community.community.enums.NotificationStatusEnum;
+import life.majiang.community.community.enums.NotificationTypeEnum;
+import life.majiang.community.community.exception.CustomizeErrorCode;
+import life.majiang.community.community.exception.CustomizeException;
 import life.majiang.community.community.mapper.NotificationMapper;
-import life.majiang.community.community.mapper.UserMapper;
 import life.majiang.community.community.model.*;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.BeanUtils;
@@ -13,9 +15,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * @program: community
@@ -29,12 +28,9 @@ public class NotificationService {
     @Autowired
     private NotificationMapper notificationMapper;
 
-    @Autowired
-    private UserMapper userMapper;
-
     public PaginationDTO list(Long userId, Integer page, Integer size) {
 
-        PaginationDTO<NotificationDTO> paginationDTO = new PaginationDTO<> ();
+        PaginationDTO<NotificationDTO> paginationDTO = new PaginationDTO<>();
         Integer totalPage;
         NotificationExample example = new NotificationExample();
         example.createCriteria().andReceiverEqualTo(userId);
@@ -58,29 +54,47 @@ public class NotificationService {
         questionExample.createCriteria().andReceiverEqualTo(userId);
         List<Notification> notifications = notificationMapper.selectByExampleWithRowbounds(questionExample, new RowBounds(offset, size));
 
-        if(notifications.size()==0)
-        {
+        if (notifications.size() == 0) {
             return paginationDTO;
         }
-
-        Set<Long> disUserIds = notifications.stream().map(notify -> notify.getNotifier()).collect(Collectors.toSet());
-        ArrayList<Long> userIds = new ArrayList<>(disUserIds);
-        UserExample userExample = new UserExample();
-        userExample.createCriteria().andIdIn(userIds);
-        List<User> users = userMapper.selectByExample(userExample);
-        Map<Long, User> userMap = users.stream().collect(Collectors.toMap(u -> u.getId(), u -> u));
-
-
-
-
-
         List<NotificationDTO> notificationDTOS = new ArrayList<>();
 
-
+        for (Notification notification : notifications) {
+            NotificationDTO notificationDTO = new NotificationDTO();
+            BeanUtils.copyProperties(notification, notificationDTO);
+            notificationDTO.setTypeName(NotificationTypeEnum.nameOfType(notification.getType()));
+            notificationDTOS.add(notificationDTO);
+        }
         paginationDTO.setData(notificationDTOS);
-
-
         return paginationDTO;
     }
+
+    public Long unreadCount(Long id) {
+        NotificationExample example = new NotificationExample();
+        example.createCriteria().andReceiverEqualTo(id).andStatusEqualTo(NotificationStatusEnum.UNREAD.getStatus());
+        return Long.valueOf(notificationMapper.countByExample(example));
+    }
+
+    public NotificationDTO read(Long id, User user) {
+        Notification notification = notificationMapper.selectByPrimaryKey(id);
+        if (notification == null) {
+            throw new CustomizeException(CustomizeErrorCode.NOTIFICATION_NOT_FOUND);
+        }
+        if (notification.getReceiver() != user.getId()) {
+            throw new CustomizeException(CustomizeErrorCode.READ_NOTIFICATION_FAILD);
+        }
+
+        //标记为已读
+        notification.setStatus(NotificationStatusEnum.READ.getStatus());
+        notificationMapper.updateByPrimaryKey(notification);
+
+        NotificationDTO notificationDTO = new NotificationDTO();
+        BeanUtils.copyProperties(notification, notificationDTO);
+        notificationDTO.setTypeName(NotificationTypeEnum.nameOfType(notification.getType()));
+        return notificationDTO;
+    }
 }
+
+
+
 
