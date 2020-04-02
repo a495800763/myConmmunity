@@ -12,6 +12,7 @@ this is my community demo copy from codedrinker
 [JQuery](jquert.com)  
 [MyBatis Generator](http://mybatis.org/generator/)  
 [SegmentFault](https://segmentfault.com/)  
+[MarkDown 插件](http://editor.md.ipandao.com/)
 
 
 
