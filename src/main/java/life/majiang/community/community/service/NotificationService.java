@@ -34,6 +34,7 @@ public class NotificationService {
         Integer totalPage;
         NotificationExample example = new NotificationExample();
         example.createCriteria().andReceiverEqualTo(userId);
+        example.setOrderByClause("gmt_create desc");
         Integer totalCount = notificationMapper.countByExample(example);
         if (totalCount % size == 0) {
             totalPage = totalCount / size;
@@ -50,9 +51,10 @@ public class NotificationService {
         paginationDTO.setPagination(totalPage, page);
 
         Integer offset = size * (page - 1);
-        NotificationExample questionExample = new NotificationExample();
-        questionExample.createCriteria().andReceiverEqualTo(userId);
-        List<Notification> notifications = notificationMapper.selectByExampleWithRowbounds(questionExample, new RowBounds(offset, size));
+        NotificationExample notificationExample = new NotificationExample();
+        notificationExample.createCriteria().andReceiverEqualTo(userId);
+        notificationExample.setOrderByClause("gmt_create desc");
+        List<Notification> notifications = notificationMapper.selectByExampleWithRowbounds(notificationExample, new RowBounds(offset, size));
 
         if (notifications.size() == 0) {
             return paginationDTO;

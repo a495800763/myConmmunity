@@ -94,7 +94,7 @@
                    th:class="${section=='question'}?'active list-group-item':'list-group-item'">我的提问 </a>
                 <a href="/profile/replies" th:class="${section=='replies'}?'active list-group-item':'list-group-item'">
                     最新回复
-                    <span class="badge" th:text="${unreadCount}">14</span>
+                    <span class="badge" th:text="${session.unreadCount}">14</span>
                 </a>
             </div>
         </div>
