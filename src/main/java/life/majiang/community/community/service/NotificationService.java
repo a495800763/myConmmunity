@@ -23,11 +23,19 @@ import java.util.List;
  * @create: 2020-04-01 11:12
  **/
 @Service
-public class NotificationService {
+public class NotificationService implements  NotificationServiceInter {
 
     @Autowired
     private NotificationMapper notificationMapper;
 
+    /**
+     *分页查询列表
+     * @param userId
+     * @param page
+     * @param size
+     * @return
+     */
+    @Override
     public PaginationDTO list(Long userId, Integer page, Integer size) {
 
         PaginationDTO<NotificationDTO> paginationDTO = new PaginationDTO<>();
@@ -71,12 +79,25 @@ public class NotificationService {
         return paginationDTO;
     }
 
+    /**
+     * 得到用户的未读信息数
+     * @param id
+     * @return
+     */
+    @Override
     public Long unreadCount(Long id) {
         NotificationExample example = new NotificationExample();
         example.createCriteria().andReceiverEqualTo(id).andStatusEqualTo(NotificationStatusEnum.UNREAD.getStatus());
         return Long.valueOf(notificationMapper.countByExample(example));
     }
 
+    /**
+     * 读取信息
+     * @param id
+     * @param user
+     * @return
+     */
+    @Override
     public NotificationDTO read(Long id, User user) {
         Notification notification = notificationMapper.selectByPrimaryKey(id);
         if (notification == null) {

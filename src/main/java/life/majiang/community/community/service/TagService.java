@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  * @create: 2020-03-30 22:32
  **/
 @Service
-public class TagService {
+public class TagService implements TagServiceInter {
 
     @Autowired
     private TagMapper tagMapper;
@@ -30,6 +30,7 @@ public class TagService {
     @Autowired
     private TagCategoryMapper tagCategoryMapper;
 
+    @Override
     public List<TagDTO> getTagDTO() {
         List<Tag> tags = tagMapper.selectByExample(new TagExample());
         List<TagCategory> tagCategories = tagCategoryMapper.selectByExample(new TagCategoryExample());
@@ -50,7 +51,7 @@ public class TagService {
         return tagDTOS;
     }
 
-
+    @Override
     public String filterInvalid(String tags) {
         String[] split = StringUtils.split(tags, ",");
         List<TagDTO> tagDTOS = getTagDTO();

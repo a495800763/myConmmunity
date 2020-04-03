@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
  * @create: 2020-03-26 14:37
  **/
 @Service
-public class CommentService {
+public class CommentService implements  CommentServiceInter {
 
     @Autowired
     private CommentMapper commentMapper;
@@ -51,6 +51,7 @@ public class CommentService {
      * @param comment
      */
     //整个步骤通过作为一个事务
+    @Override
     @Transactional
     public void insert(Comment comment,User commentator) {
 
@@ -123,6 +124,7 @@ public class CommentService {
      * @param type
      * @return
      */
+    @Override
     public List<CommentDTO> listByTargetid(Long id, CommentTypeEnum type) {
         CommentExample commentExample = new CommentExample();
         commentExample.createCriteria()

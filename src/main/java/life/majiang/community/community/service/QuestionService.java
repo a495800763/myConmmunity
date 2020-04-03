@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class QuestionService {
+public class QuestionService implements QuestionServiceInter {
 
     @Autowired
     private QuestionMapper questionMapper;
@@ -40,6 +40,7 @@ public class QuestionService {
      * @param size
      * @return
      */
+    @Override
     public PaginationDTO list(Integer page, Integer size) {
 
         Integer totalCount = questionMapper.countByExample(new QuestionExample());
@@ -85,6 +86,7 @@ public class QuestionService {
      * @param size
      * @return
      */
+    @Override
     public PaginationDTO list(Long userId, Integer page, Integer size) {
         PaginationDTO<QuestionDTO> paginationDTO = new PaginationDTO<>();
         Integer totalPage;
@@ -132,6 +134,7 @@ public class QuestionService {
      * @param id
      * @return
      */
+    @Override
     public QuestionDTO getById(Long id) {
         Question question = questionMapper.selectByPrimaryKey(id);
         if (question == null) {
@@ -149,6 +152,7 @@ public class QuestionService {
      *
      * @param question
      */
+    @Override
     public void creatOrUpdate(Question question) {
         if (question.getId() == null) {
             //创建新的问题
@@ -181,6 +185,7 @@ public class QuestionService {
      *
      * @param id
      */
+    @Override
     public void incView(Long id) {
         Question question = new Question();
         question.setId(id);

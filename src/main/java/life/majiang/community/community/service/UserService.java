@@ -15,33 +15,32 @@ import java.util.List;
  * @create: 2020-03-25 10:03
  **/
 @Service
-public class UserService {
+public class UserService implements UserServiceInter {
 
     @Autowired
     private UserMapper userMapper;
 
 
+    @Override
     public void createOrUpdate(User user) {
         UserExample userExample = new UserExample();
         userExample.createCriteria().andAccountIdEqualTo(user.getAccountId());
-        List<User> users=userMapper.selectByExample(userExample);
-             if(users.size()==0)
-             {
-                 //insert
-                 user.setGmtCreate(System.currentTimeMillis());
-                 user.setGmtModified(user.getGmtCreate());
-                 userMapper.insert(user);
-             }
-             else{
-                 User dbUser = users.get(0);
-                 User updateUswer =new User();
-                 updateUswer.setGmtModified(System.currentTimeMillis());
-                 updateUswer.setAvatarUrl(user.getAvatarUrl());
-                 updateUswer.setName(user.getName());
-                 updateUswer.setToken(user.getToken());
-                 UserExample example = new UserExample();
-                 example.createCriteria().andIdEqualTo(dbUser.getId());
-                 userMapper.updateByExampleSelective(updateUswer, example);
-             }
+        List<User> users = userMapper.selectByExample(userExample);
+        if (users.size() == 0) {
+            //insert
+            user.setGmtCreate(System.currentTimeMillis());
+            user.setGmtModified(user.getGmtCreate());
+            userMapper.insert(user);
+        } else {
+            User dbUser = users.get(0);
+            User updateUswer = new User();
+            updateUswer.setGmtModified(System.currentTimeMillis());
+            updateUswer.setAvatarUrl(user.getAvatarUrl());
+            updateUswer.setName(user.getName());
+            updateUswer.setToken(user.getToken());
+            UserExample example = new UserExample();
+            example.createCriteria().andIdEqualTo(dbUser.getId());
+            userMapper.updateByExampleSelective(updateUswer, example);
+        }
     }
 }
