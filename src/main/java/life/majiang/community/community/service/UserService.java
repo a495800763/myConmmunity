@@ -33,14 +33,14 @@ public class UserService implements UserServiceInter {
             userMapper.insert(user);
         } else {
             User dbUser = users.get(0);
-            User updateUswer = new User();
-            updateUswer.setGmtModified(System.currentTimeMillis());
-            updateUswer.setAvatarUrl(user.getAvatarUrl());
-            updateUswer.setName(user.getName());
-            updateUswer.setToken(user.getToken());
+            User updateUser = new User();
+            updateUser.setGmtModified(System.currentTimeMillis());
+            updateUser.setAvatarUrl(user.getAvatarUrl());
+            updateUser.setName(user.getName());
+            updateUser.setToken(user.getToken());
             UserExample example = new UserExample();
             example.createCriteria().andIdEqualTo(dbUser.getId());
-            userMapper.updateByExampleSelective(updateUswer, example);
+            userMapper.updateByExampleSelective(updateUser, example);
         }
     }
 }

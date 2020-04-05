@@ -1,6 +1,8 @@
 package life.majiang.community.community.util;
 
 import com.aliyun.oss.OSSClient;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.net.URL;
@@ -14,14 +16,18 @@ import java.util.Date;
  * @author: liumq
  * @create: 2020-04-03 20:30
  **/
+@Component
 public class AliyunFileUtil {
 
     //外网访问地域节点
+    //@Value("${aliyun.oss.endpoint}")
     private static String endpoint="http://oss-cn-beijing.aliyuncs.com";
     //你的accessKeyId
-    private static String accessKeyId ="LTAI4FuMPpeDiSHswVmGmwFa";
+    //@Value("${aliyun.oss.accessKeyId}")
+    private static String accessKeyId="LTAI4FuMPpeDiSHswVmGmwFa";
     //你的accessKeySecret
-    private static String accessKeySecret = "4xSQpNqDswLbKY4EAi400oiD7AgI7e";
+    //@Value("${aliyun.oss.accessKeySecret}")
+    private static String accessKeySecret="4xSQpNqDswLbKY4EAi400oiD7AgI7e";
 
     public void opration ()
     {
@@ -33,7 +39,7 @@ public class AliyunFileUtil {
     public static void main(String[] args) {
         SimpleDateFormat sdf  = new SimpleDateFormat("yyyyMMdd");
         // 原图地址
-        String fileName = "E:/Pictures/ai.jpg";
+        String fileName = "E:/Pictures/huiyaunmaimeng.jpg";
         String bucketName ="xiaofeichai";
         // 获取文件的后缀名
         String suffixName = fileName.substring(fileName.lastIndexOf("."));
