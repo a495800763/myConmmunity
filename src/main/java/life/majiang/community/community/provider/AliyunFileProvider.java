@@ -1,8 +1,6 @@
-package life.majiang.community.community.util;
+package life.majiang.community.community.provider;
 
 import com.aliyun.oss.OSSClient;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.net.URL;
@@ -12,13 +10,10 @@ import java.util.Date;
 
 /**
  * @program: community
- * @description
  * @author: liumq
- * @create: 2020-04-03 20:30
+ * @create: 2020-04-07 11:13
  **/
-@Component
-public class AliyunFileUtil {
-
+public class AliyunFileProvider {
     //外网访问地域节点
     //@Value("${aliyun.oss.endpoint}")
     private static String endpoint="http://oss-cn-beijing.aliyuncs.com";
@@ -58,5 +53,4 @@ public class AliyunFileUtil {
         System.out.println(url.toString());
 
     }
-
 }
