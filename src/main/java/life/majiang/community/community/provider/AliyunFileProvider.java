@@ -70,12 +70,13 @@ public class AliyunFileProvider {
         } else {
             return null;
         }
+
+
         // 生成上传文件名
         String objectName = sdf.format(new Date()) + "_" + finalFileName;
         FileOutputStream imgOut = new FileOutputStream(new File(dir, objectName));
         imgOut.write(file.getBytes());
         String allPathFileName = dir + "\\" + objectName;
-
         File fileNew = new File(allPathFileName);
         ossClient.putObject(bucketName, objectName, fileNew);
         // 设置URL过期时间为1小时。
@@ -87,6 +88,7 @@ public class AliyunFileProvider {
        // fileNew.deleteOnExit();
         if(fileNew.isFile()&&fileNew.exists())
         {
+            // 先关闭流,再删除文件
             imgOut.close();
             fileNew.delete();
         }
