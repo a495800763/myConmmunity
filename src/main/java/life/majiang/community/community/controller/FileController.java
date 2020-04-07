@@ -21,26 +21,28 @@ import javax.servlet.http.HttpServletRequest;
 public class FileController {
 
 
-
     @Autowired
     private AliyunFileProvider aliyunFileProvider;
 
 
-
     @RequestMapping("/file/upload")
     @ResponseBody
-    public FileDTO upload(HttpServletRequest request)
-    {
-        MultipartHttpServletRequest multipartRequest=(MultipartHttpServletRequest)request;
-
+    public FileDTO upload(HttpServletRequest request) {
+        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         MultipartFile file = multipartRequest.getFile("editormd-image-file");
+        try {
 
-
-        FileDTO fileDTO = new FileDTO();
-        fileDTO.setSuccess(1);
-        fileDTO.setUrl("/img/wechat.png");
-        return fileDTO;
-
+            String fileName = aliyunFileProvider.upload(file);
+            FileDTO fileDTO = new FileDTO();
+            fileDTO.setUrl(fileName);
+            fileDTO.setSuccess(1);
+            return fileDTO;
+        } catch (Exception e) {
+            FileDTO fileDTO = new FileDTO();
+            fileDTO.setSuccess(0);
+            fileDTO.setMessage("上传失败");
+            return fileDTO;
+        }
 
     }
 }
