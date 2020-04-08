@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
  * @create: 2020-03-26 14:37
  **/
 @Service
-public class CommentService implements  CommentServiceInter {
+public class CommentService implements CommentServiceInter {
 
     @Autowired
     private CommentMapper commentMapper;
@@ -48,12 +48,13 @@ public class CommentService implements  CommentServiceInter {
 
     /**
      * 插入评论
+     *
      * @param comment
      */
     //整个步骤通过作为一个事务
     @Override
     @Transactional
-    public void insert(Comment comment,User commentator) {
+    public void insert(Comment comment, User commentator) {
 
         if (comment.getParentId() == null || comment.getParentId() == 0) {
             throw new CustomizeException(CustomizeErrorCode.TARGET_PARAM_MOT_FOUND);
@@ -79,7 +80,7 @@ public class CommentService implements  CommentServiceInter {
             parentComment.setCommentCount(DEFAULT_COMMENT_INC_COUNT);
             commentExtMapper.incComment(parentComment);
             //创建通知
-            createNotifiy(comment,dbComment.getCommentator(),commentator.getName(),question.getTitle(),NotificationTypeEnum.REPLY_COMMENT,question.getId());
+            createNotifiy(comment, dbComment.getCommentator(), commentator.getName(), question.getTitle(), NotificationTypeEnum.REPLY_COMMENT, question.getId());
 
 
         } else {
@@ -93,18 +94,22 @@ public class CommentService implements  CommentServiceInter {
             questionExtMapper.incComment(question);
 
             //创建通知
-            createNotifiy(comment,question.getCreator(),commentator.getName(),question.getTitle(),NotificationTypeEnum.REPLY_QUESTION,question.getId());
+            createNotifiy(comment, question.getCreator(), commentator.getName(), question.getTitle(), NotificationTypeEnum.REPLY_QUESTION, question.getId());
 
         }
     }
 
     /**
      * 创建通知
-     * @param comment 评论对象
-     * @param receiver 通知接受者
-     * @param notificationTypeEnum  通知类型
+     *
+     * @param comment              评论对象
+     * @param receiver             通知接受者
+     * @param notificationTypeEnum 通知类型
      */
-    private void createNotifiy(Comment comment,Long receiver,String notifierName,String outerTitle,NotificationTypeEnum notificationTypeEnum,Long outerId) {
+    private void createNotifiy(Comment comment, Long receiver, String notifierName, String outerTitle, NotificationTypeEnum notificationTypeEnum, Long outerId) {
+        if (receiver.equals(comment.getCommentator())) {
+            return;
+        }
         Notification notification = new Notification();
         notification.setGmtCreate(System.currentTimeMillis());
         notification.setType(notificationTypeEnum.getType());
@@ -120,6 +125,7 @@ public class CommentService implements  CommentServiceInter {
 
     /**
      * 根据目标类型去获得列表
+     *
      * @param id
      * @param type
      * @return

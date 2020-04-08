@@ -115,12 +115,12 @@
                     <div class="media">
                         <div class="media-left">
                             <a href="#" class="media-object">
-                                <img class="img-rounded media-object " th:src="${question.getUser().getAvatarUrl()}">
+                                <img class="img-rounded media-object " th:src="${session.user!=null ? session.user.getAvatarUrl():'/img/default-avatar.png'}">
                             </a>
                         </div>
                         <div class="media-body">
                             <h4 class="media-heading">
-                                <span th:text="${question.getUser().getName()}"></span>
+                                <span th:text="${session.user!=null ? session.user.getName():'匿名用户'}"></span>
                             </h4>
                         </div>
                     </div>

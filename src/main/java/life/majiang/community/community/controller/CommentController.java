@@ -49,6 +49,7 @@ public class CommentController {
         comment.setGmtModified(comment.getGmtCreate());
         comment.setLikeCount(DEFAULT_LIKE_COUNT);
         comment.setCommentator(user.getId());
+        comment.setCommentCount(DEFAULT_COMMENT_COUNT);
         commentService.insert(comment,user);
         return ResultDTO.okOf();
 
@@ -62,4 +63,5 @@ public class CommentController {
     }
 
     private static final Long DEFAULT_LIKE_COUNT = 0L;
+    private static final Long DEFAULT_COMMENT_COUNT =0L;
 }
