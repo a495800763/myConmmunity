@@ -1,6 +1,7 @@
 package life.majiang.community.community.controller;
 
 import life.majiang.community.community.dto.FileDTO;
+import life.majiang.community.community.enums.FileUploadStatusEnum;
 import life.majiang.community.community.provider.AliyunFileProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,11 +36,11 @@ public class FileController {
             String fileName = aliyunFileProvider.upload(file);
             FileDTO fileDTO = new FileDTO();
             fileDTO.setUrl(fileName);
-            fileDTO.setSuccess(1);
+            fileDTO.setSuccess(FileUploadStatusEnum.UPLOAD_SUCCESS.getStatus());
             return fileDTO;
         } catch (Exception e) {
             FileDTO fileDTO = new FileDTO();
-            fileDTO.setSuccess(0);
+            fileDTO.setSuccess(FileUploadStatusEnum.UPLOAD_FAILD.getStatus());
             fileDTO.setMessage("上传失败");
             return fileDTO;
         }

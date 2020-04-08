@@ -12,7 +12,9 @@ this is my community demo copy from codedrinker
 [JQuery](jquert.com)  
 [MyBatis Generator](http://mybatis.org/generator/)  
 [SegmentFault](https://segmentfault.com/)  
-[MarkDown 插件](http://editor.md.ipandao.com/)
+[MarkDown 插件](http://editor.md.ipandao.com/)  
+[Aliyun OSS SDK DOC](https://help.aliyun.com/document_detail/32008.html?spm=a2c4g.11186623.6.765.16ed69cbvSlsP2)  
+
 
 
 
