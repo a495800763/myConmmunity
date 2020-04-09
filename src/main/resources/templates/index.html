@@ -36,7 +36,7 @@
                     <h4 class="media-heading">
                         <a th:href="@{'/question/'+${question.id}}" th:text="${question.getTitle()}"></a>
                     </h4>
-                   <!-- <span th:text="${question.getDescription()}"></span>-->
+                    <span th:text="${question.getIndexDescription()}"></span>
                     <br>
                     <span class="text-desc"> <span th:text="${question.getCommentCount()}"
                                                    th:if="${question.getCommentCount()!=null}"></span> <span
