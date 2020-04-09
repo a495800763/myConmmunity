@@ -138,7 +138,7 @@ public class QuestionService implements QuestionServiceInter {
             User user = userMapper.selectByPrimaryKey(question.getCreator());
             QuestionDTO questionDTO = new QuestionDTO();
             BeanUtils.copyProperties(question, questionDTO);
-            if (question.getDescription().contains("http://xiaofeichai.oss-cn-beijing.aliyuncs.com/")) {
+            if (question.getDescription() != null && question.getDescription().contains("http://xiaofeichai.oss-cn-beijing.aliyuncs.com/")) {
                 questionDTO.setIndexDescription("点击问题查看相关图片及描述");
             } else {
                 questionDTO.setIndexDescription(question.getDescription());

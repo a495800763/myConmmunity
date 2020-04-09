@@ -1,6 +1,7 @@
 package life.majiang.community.community.controller;
 import life.majiang.community.community.dto.PaginationDTO;
 import life.majiang.community.community.service.QuestionService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +26,12 @@ public class IndexController {
         PaginationDTO pagination = questionService.list(search,page,size);
         model.addAttribute("pagination", pagination);
         model.addAttribute("search",search);
+        Integer showSearch =0;
+        if(search!=null&&StringUtils.isNotBlank(search))
+        {
+            showSearch=1;
+        }
+        model.addAttribute("showSearch",showSearch);
         return "index";
     }
 }
