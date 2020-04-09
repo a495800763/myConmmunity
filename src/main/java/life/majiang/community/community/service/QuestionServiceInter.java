@@ -13,7 +13,7 @@ import java.util.List;
  * @create: 2020-04-03 14:39
  **/
 public interface QuestionServiceInter {
-    PaginationDTO list(Integer page, Integer size);
+    PaginationDTO list(String search,Integer page, Integer size);
 
     PaginationDTO list(Long userId, Integer page, Integer size);
 

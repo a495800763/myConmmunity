@@ -2,6 +2,7 @@ package life.majiang.community.community.service;
 
 import life.majiang.community.community.dto.PaginationDTO;
 import life.majiang.community.community.dto.QuestionDTO;
+import life.majiang.community.community.dto.QuestionQueryDTO;
 import life.majiang.community.community.exception.CustomizeErrorCode;
 import life.majiang.community.community.exception.CustomizeException;
 import life.majiang.community.community.mapper.QuestionExtMapper;
@@ -41,11 +42,23 @@ public class QuestionService implements QuestionServiceInter {
      * @return
      */
     @Override
-    public PaginationDTO list(Integer page, Integer size) {
+    public PaginationDTO list(String search, Integer page, Integer size) {
 
-        Integer totalCount = questionMapper.countByExample(new QuestionExample());
+
+        if (StringUtils.isNotBlank(search)) {
+            //得到每个tag的数组
+            String[] tags = StringUtils.split(search, " ");
+            search = Arrays.stream(tags).collect(Collectors.joining("|"));
+
+        }
+
 
         PaginationDTO<QuestionDTO> paginationDTO = new PaginationDTO<>();
+        QuestionQueryDTO questionQueryDTO = new QuestionQueryDTO();
+        questionQueryDTO.setSearch(search);
+        Integer totalCount = questionExtMapper.countBySearch(questionQueryDTO);
+
+
         Integer totalPage;
 
         if (totalCount % size == 0) {
@@ -65,7 +78,9 @@ public class QuestionService implements QuestionServiceInter {
         Integer offset = size * (page - 1);
         QuestionExample questionExample = new QuestionExample();
         questionExample.setOrderByClause("gmt_create desc");
-        List<Question> questions = questionMapper.selectByExampleWithRowbounds(questionExample, new RowBounds(offset, size));
+        questionQueryDTO.setSize(size);
+        questionQueryDTO.setPage(offset);
+        List<Question> questions = questionExtMapper.selectBySearch(questionQueryDTO);
         List<QuestionDTO> questionDTOList = new ArrayList<>();
         for (Question question : questions) {
             User user = userMapper.selectByPrimaryKey(question.getCreator());
@@ -200,6 +215,7 @@ public class QuestionService implements QuestionServiceInter {
      * @param questionDTO
      * @return
      */
+    @Override
     public List<QuestionDTO> selectRelated(QuestionDTO questionDTO) {
         if (StringUtils.isBlank(questionDTO.getTag())) {
             return new ArrayList<>();

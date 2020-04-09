@@ -90,6 +90,7 @@ public class CommentService implements CommentServiceInter {
                 throw new CustomizeException(CustomizeErrorCode.QUSSTION_NOT_FOUND);
             }
             commentMapper.insert(comment);
+
             question.setCommentCount(DEFAULT_INC_COUNT);
             questionExtMapper.incComment(question);
 
