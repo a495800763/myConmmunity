@@ -51,6 +51,8 @@ public class CustomizeExceptionHandler {
             } else {
                 model.addAttribute("message", CustomizeErrorCode.SYS_ERROR.getMessage());
             }
+            //在服务器端还是要打印一下错误的堆栈
+            e.printStackTrace();
             return new ModelAndView("error");
         }
     }
