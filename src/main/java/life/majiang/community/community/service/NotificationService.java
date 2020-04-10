@@ -71,6 +71,10 @@ public class NotificationService implements  NotificationServiceInter {
 
         for (Notification notification : notifications) {
             NotificationDTO notificationDTO = new NotificationDTO();
+            if(notification.getNotifierName()==null)
+            {
+                notification.setNotifierName("匿名用户_"+notification.getNotifier());
+            }
             BeanUtils.copyProperties(notification, notificationDTO);
             notificationDTO.setTypeName(NotificationTypeEnum.nameOfType(notification.getType()));
             notificationDTOS.add(notificationDTO);
