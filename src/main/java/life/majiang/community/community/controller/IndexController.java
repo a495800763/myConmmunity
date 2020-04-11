@@ -34,4 +34,23 @@ public class IndexController {
         model.addAttribute("showSearch",showSearch);
         return "index";
     }
+
+    @GetMapping("/eliminateNonoReply")
+    public String eliminateNonoRespose (Model model,
+                                        @RequestParam(name = "page", defaultValue = "1") Integer page,
+                                        @RequestParam(name = "size", defaultValue = "5") Integer size,
+                                        @RequestParam(name = "search", required = false) String search)
+    {
+        //PaginationDTO pagination = questionService.listForNoneReply(search,page,size);
+        PaginationDTO pagination = questionService.list(search,page,size);
+        model.addAttribute("pagination", pagination);
+        model.addAttribute("search",search);
+        Integer showSearch =0;
+        if(search!=null&&StringUtils.isNotBlank(search))
+        {
+            showSearch=1;
+        }
+        model.addAttribute("showSearch",showSearch);
+        return "index";
+    }
 }

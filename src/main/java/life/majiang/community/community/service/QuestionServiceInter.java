@@ -24,4 +24,6 @@ public interface QuestionServiceInter {
     void incView(Long id);
 
     List<QuestionDTO> selectRelated(QuestionDTO questionDTO);
+
+    PaginationDTO listForNoneReply(String search, Integer page, Integer size);
 }

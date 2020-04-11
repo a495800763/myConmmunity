@@ -252,4 +252,9 @@ public class QuestionService implements QuestionServiceInter {
     private static final Integer DEFAULT_COUNT = 0;
 
     private static final Integer DEFAULT_INC_COUNT = 1;
+
+    @Override
+    public PaginationDTO listForNoneReply(String search, Integer page, Integer size) {
+        return null;
+    }
 }
