@@ -11,6 +11,7 @@ import life.majiang.community.community.mapper.UserMapper;
 import life.majiang.community.community.model.Question;
 import life.majiang.community.community.model.QuestionExample;
 import life.majiang.community.community.model.User;
+import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.BeanUtils;
@@ -54,27 +55,12 @@ public class QuestionService implements QuestionServiceInter {
         QuestionQueryDTO questionQueryDTO = new QuestionQueryDTO();
         questionQueryDTO.setSearch(search);
         Integer totalCount = questionExtMapper.countBySearch(questionQueryDTO);
-
-
         Integer totalPage;
-
-        if (totalCount % size == 0) {
-            totalPage = totalCount / size;
-        } else {
-            totalPage = totalCount / size + 1;
-        }
-        totalPage = totalPage > 1 ? totalPage : 1;
-        if (page < 1) {
-            page = 1;
-        }
-        if (page > totalPage) {
-            page = totalPage;
-        }
-
+        PageCountInfo pageInfo = getPageInfo(totalCount, size, page);
+        totalPage = pageInfo.getTotalPage();
+        page = pageInfo.getPage();
         paginationDTO.setPagination(totalPage, page);
         Integer offset = size * (page - 1);
-        QuestionExample questionExample = new QuestionExample();
-        questionExample.setOrderByClause("gmt_create desc");
         questionQueryDTO.setSize(size);
         questionQueryDTO.setPage(offset);
         List<Question> questions = questionExtMapper.selectBySearch(questionQueryDTO);
@@ -111,20 +97,10 @@ public class QuestionService implements QuestionServiceInter {
         QuestionExample example = new QuestionExample();
         example.createCriteria().andCreatorEqualTo(userId);
         Integer totalCount = questionMapper.countByExample(example);
-        if (totalCount % size == 0) {
-            totalPage = totalCount / size;
-        } else {
-            totalPage = totalCount / size + 1;
-        }
-        totalPage = totalPage > 1 ? totalPage : 1;
-        if (page < 1) {
-            page = 1;
-        }
-        if (page > totalPage) {
-            page = totalPage;
-        }
+        PageCountInfo pageInfo = getPageInfo(totalCount, size, page);
+        totalPage = pageInfo.getTotalPage();
+        page = pageInfo.getPage();
         paginationDTO.setPagination(totalPage, page);
-
         Integer offset = size * (page - 1);
         QuestionExample questionExample = new QuestionExample();
         questionExample.createCriteria().andCreatorEqualTo(userId);
@@ -248,12 +224,13 @@ public class QuestionService implements QuestionServiceInter {
 
     /**
      * 消灭零回复
+     *
      * @param page
      * @param size
      * @return
      */
     @Override
-    public PaginationDTO listForNoneReply( Integer page, Integer size) {
+    public PaginationDTO listForNoneReply(Integer page, Integer size) {
 
 
         PaginationDTO<QuestionDTO> paginationDTO = new PaginationDTO<>();
@@ -262,19 +239,9 @@ public class QuestionService implements QuestionServiceInter {
         Integer totalCount = questionExtMapper.count4Unanswered();
         Integer totalPage;
 
-        if (totalCount % size == 0) {
-            totalPage = totalCount / size;
-        } else {
-            totalPage = totalCount / size + 1;
-        }
-        totalPage = totalPage > 1 ? totalPage : 1;
-        if (page < 1) {
-            page = 1;
-        }
-        if (page > totalPage) {
-            page = totalPage;
-        }
-
+        PageCountInfo pageInfo = getPageInfo(totalCount, size, page);
+        totalPage = pageInfo.getTotalPage();
+        page = pageInfo.getPage();
         paginationDTO.setPagination(totalPage, page);
         Integer offset = size * (page - 1);
         questionQueryDTO.setSize(size);
@@ -302,5 +269,42 @@ public class QuestionService implements QuestionServiceInter {
 
     private static final Integer DEFAULT_INC_COUNT = 1;
 
+    private static final Integer DEFAULT_TOTAL_PAGE = 1;
 
+    private static final Integer DEFAULT_CURRENT_PAGE = 1;
+
+
+    /**
+     * 处理页码和总数信息
+     * @param totalCount
+     * @param size
+     * @param page
+     * @return
+     */
+    private PageCountInfo getPageInfo(Integer totalCount, Integer size, Integer page) {
+        PageCountInfo pageInfo = new PageCountInfo();
+
+        if (totalCount % size == 0) {
+            pageInfo.setTotalPage(totalCount / size);
+        } else {
+            pageInfo.setTotalPage(totalCount / size + 1);
+        }
+        if (pageInfo.getTotalPage() < DEFAULT_TOTAL_PAGE) {
+            pageInfo.setTotalPage(DEFAULT_TOTAL_PAGE);
+        }
+        if (page < DEFAULT_CURRENT_PAGE) {
+            pageInfo.setPage(DEFAULT_CURRENT_PAGE);
+        }
+        if (page > pageInfo.getTotalPage()) {
+            pageInfo.setPage(pageInfo.getTotalPage());
+        }
+        return pageInfo;
+    }
+
+}
+
+@Data
+class PageCountInfo {
+    Integer totalPage;
+    Integer page;
 }
