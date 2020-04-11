@@ -16,6 +16,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -34,6 +35,9 @@ public class QuestionService implements QuestionServiceInter {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Value("${image.url.match}")
+    private String urlMatch;
 
     /**
      * 查询问题列表
@@ -69,8 +73,8 @@ public class QuestionService implements QuestionServiceInter {
             User user = userMapper.selectByPrimaryKey(question.getCreator());
             QuestionDTO questionDTO = new QuestionDTO();
             BeanUtils.copyProperties(question, questionDTO);
-            if (question.getDescription().contains("http://xiaofeichai.oss-cn-beijing.aliyuncs.com/")) {
-                questionDTO.setIndexDescription("点击问题查看相关图片及描述");
+            if (question.getDescription().contains(urlMatch)) {
+                questionDTO.setIndexDescription(INDEX_DESCRIPTION_STRING);
             } else {
                 questionDTO.setIndexDescription(question.getDescription());
             }
@@ -111,8 +115,8 @@ public class QuestionService implements QuestionServiceInter {
             User user = userMapper.selectByPrimaryKey(question.getCreator());
             QuestionDTO questionDTO = new QuestionDTO();
             BeanUtils.copyProperties(question, questionDTO);
-            if (question.getDescription() != null && question.getDescription().contains("http://xiaofeichai.oss-cn-beijing.aliyuncs.com/")) {
-                questionDTO.setIndexDescription("点击问题查看相关图片及描述");
+            if (question.getDescription() != null && question.getDescription().contains(urlMatch)) {
+                questionDTO.setIndexDescription(INDEX_DESCRIPTION_STRING);
             } else {
                 questionDTO.setIndexDescription(question.getDescription());
             }
@@ -252,8 +256,8 @@ public class QuestionService implements QuestionServiceInter {
             User user = userMapper.selectByPrimaryKey(question.getCreator());
             QuestionDTO questionDTO = new QuestionDTO();
             BeanUtils.copyProperties(question, questionDTO);
-            if (question.getDescription().contains("http://xiaofeichai.oss-cn-beijing.aliyuncs.com/")) {
-                questionDTO.setIndexDescription("点击问题查看相关图片及描述");
+            if (question.getDescription().contains(urlMatch)) {
+                questionDTO.setIndexDescription(INDEX_DESCRIPTION_STRING);
             } else {
                 questionDTO.setIndexDescription(question.getDescription());
             }
@@ -272,6 +276,8 @@ public class QuestionService implements QuestionServiceInter {
     private static final Integer DEFAULT_TOTAL_PAGE = 1;
 
     private static final Integer DEFAULT_CURRENT_PAGE = 1;
+
+    private static final String INDEX_DESCRIPTION_STRING = "点击问题查看相关图片及描述";
 
 
     /**
