@@ -44,15 +44,12 @@ public class QuestionService implements QuestionServiceInter {
     @Override
     public PaginationDTO list(String search, Integer page, Integer size) {
 
-
         if (StringUtils.isNotBlank(search)) {
             //得到每个tag的数组
             String[] tags = StringUtils.split(search, " ");
             search = Arrays.stream(tags).collect(Collectors.joining("|"));
 
         }
-
-
         PaginationDTO<QuestionDTO> paginationDTO = new PaginationDTO<>();
         QuestionQueryDTO questionQueryDTO = new QuestionQueryDTO();
         questionQueryDTO.setSearch(search);
@@ -249,12 +246,61 @@ public class QuestionService implements QuestionServiceInter {
         }
     }
 
+    /**
+     * 消灭零回复
+     * @param page
+     * @param size
+     * @return
+     */
+    @Override
+    public PaginationDTO listForNoneReply( Integer page, Integer size) {
+
+
+        PaginationDTO<QuestionDTO> paginationDTO = new PaginationDTO<>();
+        QuestionQueryDTO questionQueryDTO = new QuestionQueryDTO();
+
+        Integer totalCount = questionExtMapper.count4Unanswered();
+        Integer totalPage;
+
+        if (totalCount % size == 0) {
+            totalPage = totalCount / size;
+        } else {
+            totalPage = totalCount / size + 1;
+        }
+        totalPage = totalPage > 1 ? totalPage : 1;
+        if (page < 1) {
+            page = 1;
+        }
+        if (page > totalPage) {
+            page = totalPage;
+        }
+
+        paginationDTO.setPagination(totalPage, page);
+        Integer offset = size * (page - 1);
+        questionQueryDTO.setSize(size);
+        questionQueryDTO.setPage(offset);
+        List<Question> questions = questionExtMapper.select4Unanswered(questionQueryDTO);
+        List<QuestionDTO> questionDTOList = new ArrayList<>();
+        for (Question question : questions) {
+            User user = userMapper.selectByPrimaryKey(question.getCreator());
+            QuestionDTO questionDTO = new QuestionDTO();
+            BeanUtils.copyProperties(question, questionDTO);
+            if (question.getDescription().contains("http://xiaofeichai.oss-cn-beijing.aliyuncs.com/")) {
+                questionDTO.setIndexDescription("点击问题查看相关图片及描述");
+            } else {
+                questionDTO.setIndexDescription(question.getDescription());
+            }
+
+            questionDTO.setUser(user);
+            questionDTOList.add(questionDTO);
+        }
+        paginationDTO.setData(questionDTOList);
+        return paginationDTO;
+    }
+
     private static final Integer DEFAULT_COUNT = 0;
 
     private static final Integer DEFAULT_INC_COUNT = 1;
 
-    @Override
-    public PaginationDTO listForNoneReply(String search, Integer page, Integer size) {
-        return null;
-    }
+
 }

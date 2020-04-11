@@ -17,4 +17,9 @@ public interface QuestionExtMapper {
     Integer countBySearch(QuestionQueryDTO questionQueryDTO);
 
     List<Question> selectBySearch(QuestionQueryDTO questionQueryDTO);
+
+    Integer count4Unanswered ();
+
+    List<Question> select4Unanswered(QuestionQueryDTO questionQueryDTO);
+
 }

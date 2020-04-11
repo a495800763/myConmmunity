@@ -32,25 +32,21 @@ public class IndexController {
             showSearch=1;
         }
         model.addAttribute("showSearch",showSearch);
+        model.addAttribute("section","index");
         return "index";
     }
 
-    @GetMapping("/eliminateNonoReply")
+    @GetMapping("/index/unanswered")
     public String eliminateNonoRespose (Model model,
                                         @RequestParam(name = "page", defaultValue = "1") Integer page,
-                                        @RequestParam(name = "size", defaultValue = "5") Integer size,
-                                        @RequestParam(name = "search", required = false) String search)
+                                        @RequestParam(name = "size", defaultValue = "5") Integer size)
     {
-        //PaginationDTO pagination = questionService.listForNoneReply(search,page,size);
-        PaginationDTO pagination = questionService.list(search,page,size);
+        PaginationDTO pagination = questionService.listForNoneReply(page,size);
         model.addAttribute("pagination", pagination);
-        model.addAttribute("search",search);
+        model.addAttribute("search",null);
         Integer showSearch =0;
-        if(search!=null&&StringUtils.isNotBlank(search))
-        {
-            showSearch=1;
-        }
         model.addAttribute("showSearch",showSearch);
+        model.addAttribute("section","unanswered");
         return "index";
     }
 }

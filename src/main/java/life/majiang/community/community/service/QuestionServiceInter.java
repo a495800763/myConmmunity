@@ -25,5 +25,5 @@ public interface QuestionServiceInter {
 
     List<QuestionDTO> selectRelated(QuestionDTO questionDTO);
 
-    PaginationDTO listForNoneReply(String search, Integer page, Integer size);
+    PaginationDTO listForNoneReply(Integer page, Integer size);
 }

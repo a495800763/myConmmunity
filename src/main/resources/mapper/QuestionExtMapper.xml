@@ -48,4 +48,13 @@
         </where>
          order by gmt_create desc   limit #{page},#{size}
     </select>
+    <select id="count4Unanswered" resultType="java.lang.Integer">
+        select  count(*) from question
+        where comment_count = 0
+    </select>
+    <select id="select4Unanswered" resultType="life.majiang.community.community.model.Question"  parameterType="life.majiang.community.community.dto.QuestionQueryDTO">
+
+         select  * from question
+        where comment_count = 0   order by gmt_create desc   limit #{page},#{size}
+    </select>
 </mapper>
