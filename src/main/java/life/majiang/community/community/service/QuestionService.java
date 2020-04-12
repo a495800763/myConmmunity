@@ -301,8 +301,10 @@ public class QuestionService implements QuestionServiceInter {
         if (page < DEFAULT_CURRENT_PAGE) {
             pageInfo.setPage(DEFAULT_CURRENT_PAGE);
         }
-        if (page > pageInfo.getTotalPage()) {
+        else if (page > pageInfo.getTotalPage()) {
             pageInfo.setPage(pageInfo.getTotalPage());
+        }else{
+            pageInfo.setPage(page);
         }
         return pageInfo;
     }
