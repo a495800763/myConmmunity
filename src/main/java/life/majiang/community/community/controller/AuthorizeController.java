@@ -5,10 +5,9 @@ import life.majiang.community.community.dto.GithubUser;
 import life.majiang.community.community.model.User;
 import life.majiang.community.community.provider.GithubProvider;
 import life.majiang.community.community.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +22,7 @@ import java.util.UUID;
  * @author Administrator
  */
 @Controller
+@Slf4j
 public class AuthorizeController {
 
     @Autowired
@@ -66,6 +66,7 @@ public class AuthorizeController {
             return "redirect:/";
             //登录成功 写cookie 和session
         } else {
+             log.error("callback get github error,{}",githubUseruser);
             return "redirect:/";
             //登录失败，重新登录
         }
