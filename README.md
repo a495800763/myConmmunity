@@ -14,7 +14,7 @@ this is my community demo copy from codedrinker
 [SegmentFault](https://segmentfault.com/)  
 [MarkDown 插件](http://editor.md.ipandao.com/)  
 [Aliyun OSS SDK DOC](https://help.aliyun.com/document_detail/32008.html?spm=a2c4g.11186623.6.765.16ed69cbvSlsP2)  
-
+[Nacos](http://dubbo.apache.org/zh-cn/docs/user/references/registry/nacos.html)
 
 
 
