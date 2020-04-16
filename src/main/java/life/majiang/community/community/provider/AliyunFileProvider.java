@@ -1,5 +1,6 @@
 package life.majiang.community.community.provider;
 
+import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.aliyun.oss.OSSClient;
 import life.majiang.community.community.exception.CustomizeErrorCode;
 import life.majiang.community.community.exception.CustomizeException;
@@ -23,17 +24,17 @@ import java.util.Date;
 @Component
 public class AliyunFileProvider {
     //外网访问地域节点
-    @Value("${aliyun.oss.endpoint}")
+    @NacosValue("${aliyun.oss.endpoint}")
     private String endpoint;
     //你的accessKeyId
-    @Value("${aliyun.oss.accessKeyId}")
+    @NacosValue("${aliyun.oss.accessKeyId}")
     private String accessKeyId;
     // 你的accessKeySecret
-    @Value("${aliyun.oss.accessKeySecret}")
+    @NacosValue("${aliyun.oss.accessKeySecret}")
     private String accessKeySecret;
-    @Value("${aliyun.oss.bucketName}")
+    @NacosValue("${aliyun.oss.bucketName}")
     private String bucketName;
-    @Value("${aliyun.oss.localUploadCachePath}")
+    @NacosValue("${aliyun.oss.localUploadCachePath}")
     private String uploadPath;
 
     public String upload(MultipartFile file) throws IOException {

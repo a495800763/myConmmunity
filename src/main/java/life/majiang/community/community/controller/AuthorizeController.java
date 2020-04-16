@@ -1,5 +1,6 @@
 package life.majiang.community.community.controller;
 
+import com.alibaba.nacos.api.config.annotation.NacosValue;
 import life.majiang.community.community.dto.AccessTokenDTO;
 import life.majiang.community.community.dto.GithubUser;
 import life.majiang.community.community.model.User;
@@ -7,7 +8,6 @@ import life.majiang.community.community.provider.GithubProvider;
 import life.majiang.community.community.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,11 +30,11 @@ public class AuthorizeController {
     @Autowired
     private UserService userService;
 
-    @Value("${github.client.id}")
+    @NacosValue(value = "${github.client.id}",autoRefreshed = true)
     private String clientId;
-    @Value("${github.client.secret}")
+    @NacosValue(value = "${github.client.secret}" ,autoRefreshed = true)
     private String clientSecret;
-    @Value("${github.redirecturi}")
+    @NacosValue(value = "${github.redirecturi}",autoRefreshed = true)
     private String redirectUri;
 
     @RequestMapping("/callback")

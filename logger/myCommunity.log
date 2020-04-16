@@ -1,143 +1,208 @@
-2020-04-12 21:06:43.372 DEBUG 2968 --- [http-nio-8887-exec-5] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
-2020-04-12 21:06:43.377 DEBUG 2968 --- [http-nio-8887-exec-5] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
-2020-04-12 21:08:24.262  INFO 7944 --- [restartedMain] l.m.c.community.CommunityApplication     : Starting CommunityApplication on DESKTOP-VBEC26N with PID 7944 (started by Administrator in H:\git project\myConmmunity)
-2020-04-12 21:08:24.271  INFO 7944 --- [restartedMain] l.m.c.community.CommunityApplication     : No active profile set, falling back to default profiles: default
-2020-04-12 21:08:24.334  INFO 7944 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2020-04-12 21:08:24.335  INFO 7944 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2020-04-12 21:08:25.267  INFO 7944 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8887 (http)
-2020-04-12 21:08:25.275  INFO 7944 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-04-12 21:08:25.275  INFO 7944 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
-2020-04-12 21:08:25.342  INFO 7944 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-04-12 21:08:25.342  INFO 7944 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1007 ms
-2020-04-12 21:08:25.373  INFO 7944 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-04-12 21:08:25.512  INFO 7944 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-04-12 21:08:25.516  INFO 7944 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/community?serverTimezone=GMT%2b8&useUnicode=yes&characterEncoding=utf8'
-2020-04-12 21:08:26.149  INFO 7944 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2020-04-12 21:08:26.189  INFO 7944 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8887 (http) with context path ''
-2020-04-12 21:08:26.192  INFO 7944 --- [restartedMain] l.m.c.community.CommunityApplication     : Started CommunityApplication in 2.314 seconds (JVM running for 3.308)
-2020-04-12 21:08:35.688  INFO 7944 --- [http-nio-8887-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-04-12 21:08:35.689  INFO 7944 --- [http-nio-8887-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-04-12 21:08:35.695  INFO 7944 --- [http-nio-8887-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
-2020-04-12 21:08:35.747 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.Q.countBySearch                : ==>  Preparing: select count(*) from QUESTION 
-2020-04-12 21:08:35.760 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.Q.countBySearch                : ==> Parameters: 
-2020-04-12 21:08:35.776 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.Q.countBySearch                : <==      Total: 1
-2020-04-12 21:08:35.779 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.Q.selectBySearch               : ==>  Preparing: select * from QUESTION order by gmt_create desc limit ?,? 
-2020-04-12 21:08:35.779 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.Q.selectBySearch               : ==> Parameters: 0(Integer), 5(Integer)
-2020-04-12 21:08:35.786 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.Q.selectBySearch               : <==      Total: 5
-2020-04-12 21:08:35.786 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
-2020-04-12 21:08:35.787 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
-2020-04-12 21:08:35.789 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
-2020-04-12 21:08:35.794 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
-2020-04-12 21:08:35.795 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
-2020-04-12 21:08:35.796 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
-2020-04-12 21:08:35.797 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
-2020-04-12 21:08:35.797 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
-2020-04-12 21:08:35.799 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
-2020-04-12 21:08:35.799 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
-2020-04-12 21:08:35.799 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
-2020-04-12 21:08:35.801 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
-2020-04-12 21:08:35.802 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
-2020-04-12 21:08:35.802 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
-2020-04-12 21:08:35.804 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
-2020-04-12 21:08:37.391 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.Q.selectByPrimaryKey           : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag , description from question where id = ? 
-2020-04-12 21:08:37.391 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.Q.selectByPrimaryKey           : ==> Parameters: 20(Long)
-2020-04-12 21:08:37.393 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.Q.selectByPrimaryKey           : <==      Total: 1
-2020-04-12 21:08:37.394 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
-2020-04-12 21:08:37.394 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
-2020-04-12 21:08:37.395 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
-2020-04-12 21:08:37.396 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.Q.selectRelated                : ==>  Preparing: select * from QUESTION where id !=? and tag regexp ? 
-2020-04-12 21:08:37.397 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.Q.selectRelated                : ==> Parameters: 20(Long), java(String)
-2020-04-12 21:08:37.402 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.Q.selectRelated                : <==      Total: 10
-2020-04-12 21:08:37.436 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.CommentMapper.selectByExample  : ==>  Preparing: select id, parent_id, type, commentator, gmt_create, gmt_modified, like_count, content, comment_count from comment WHERE ( parent_id = ? and type = ? ) order by gmt_create desc 
-2020-04-12 21:08:37.437 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.CommentMapper.selectByExample  : ==> Parameters: 20(Long), 1(Integer)
-2020-04-12 21:08:37.440 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.CommentMapper.selectByExample  : <==      Total: 4
-2020-04-12 21:08:37.444 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.UserMapper.selectByExample     : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user WHERE ( id in ( ? , ? ) ) 
-2020-04-12 21:08:37.444 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.UserMapper.selectByExample     : ==> Parameters: 1(Long), 2(Long)
-2020-04-12 21:08:37.445 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.UserMapper.selectByExample     : <==      Total: 2
-2020-04-12 21:08:37.451 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.QuestionExtMapper.incView      : ==>  Preparing: update question set view_count =view_count + ? where id =? 
-2020-04-12 21:08:37.452 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.QuestionExtMapper.incView      : ==> Parameters: 1(Integer), 20(Long)
-2020-04-12 21:08:37.454 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.QuestionExtMapper.incView      : <==    Updates: 1
-2020-04-12 21:08:39.299 DEBUG 7944 --- [http-nio-8887-exec-10] l.m.c.c.m.Q.selectByPrimaryKey           : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag , description from question where id = ? 
-2020-04-12 21:08:39.300 DEBUG 7944 --- [http-nio-8887-exec-10] l.m.c.c.m.Q.selectByPrimaryKey           : ==> Parameters: 20(Long)
-2020-04-12 21:08:39.301 DEBUG 7944 --- [http-nio-8887-exec-10] l.m.c.c.m.Q.selectByPrimaryKey           : <==      Total: 1
-2020-04-12 21:08:39.302 DEBUG 7944 --- [http-nio-8887-exec-10] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
-2020-04-12 21:08:39.303 DEBUG 7944 --- [http-nio-8887-exec-10] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
-2020-04-12 21:08:39.304 DEBUG 7944 --- [http-nio-8887-exec-10] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
-2020-04-12 21:08:39.305 DEBUG 7944 --- [http-nio-8887-exec-10] l.m.c.c.m.Q.selectRelated                : ==>  Preparing: select * from QUESTION where id !=? and tag regexp ? 
-2020-04-12 21:08:39.306 DEBUG 7944 --- [http-nio-8887-exec-10] l.m.c.c.m.Q.selectRelated                : ==> Parameters: 20(Long), java(String)
-2020-04-12 21:08:39.308 DEBUG 7944 --- [http-nio-8887-exec-10] l.m.c.c.m.Q.selectRelated                : <==      Total: 10
-2020-04-12 21:08:39.312 DEBUG 7944 --- [http-nio-8887-exec-10] l.m.c.c.m.CommentMapper.selectByExample  : ==>  Preparing: select id, parent_id, type, commentator, gmt_create, gmt_modified, like_count, content, comment_count from comment WHERE ( parent_id = ? and type = ? ) order by gmt_create desc 
-2020-04-12 21:08:39.312 DEBUG 7944 --- [http-nio-8887-exec-10] l.m.c.c.m.CommentMapper.selectByExample  : ==> Parameters: 20(Long), 1(Integer)
-2020-04-12 21:08:39.315 DEBUG 7944 --- [http-nio-8887-exec-10] l.m.c.c.m.CommentMapper.selectByExample  : <==      Total: 4
-2020-04-12 21:08:39.317 DEBUG 7944 --- [http-nio-8887-exec-10] l.m.c.c.m.UserMapper.selectByExample     : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user WHERE ( id in ( ? , ? ) ) 
-2020-04-12 21:08:39.317 DEBUG 7944 --- [http-nio-8887-exec-10] l.m.c.c.m.UserMapper.selectByExample     : ==> Parameters: 1(Long), 2(Long)
-2020-04-12 21:08:39.318 DEBUG 7944 --- [http-nio-8887-exec-10] l.m.c.c.m.UserMapper.selectByExample     : <==      Total: 2
-2020-04-12 21:08:39.318 DEBUG 7944 --- [http-nio-8887-exec-10] l.m.c.c.m.QuestionExtMapper.incView      : ==>  Preparing: update question set view_count =view_count + ? where id =? 
-2020-04-12 21:08:39.318 DEBUG 7944 --- [http-nio-8887-exec-10] l.m.c.c.m.QuestionExtMapper.incView      : ==> Parameters: 1(Integer), 20(Long)
-2020-04-12 21:08:39.322 DEBUG 7944 --- [http-nio-8887-exec-10] l.m.c.c.m.QuestionExtMapper.incView      : <==    Updates: 1
-2020-04-12 21:08:40.479 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.Q.selectByPrimaryKey           : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag , description from question where id = ? 
-2020-04-12 21:08:40.480 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.Q.selectByPrimaryKey           : ==> Parameters: 20(Long)
-2020-04-12 21:08:40.481 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.Q.selectByPrimaryKey           : <==      Total: 1
-2020-04-12 21:08:40.482 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
-2020-04-12 21:08:40.482 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
-2020-04-12 21:08:40.483 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
-2020-04-12 21:08:40.484 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.Q.selectRelated                : ==>  Preparing: select * from QUESTION where id !=? and tag regexp ? 
-2020-04-12 21:08:40.484 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.Q.selectRelated                : ==> Parameters: 20(Long), java(String)
-2020-04-12 21:08:40.487 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.Q.selectRelated                : <==      Total: 10
-2020-04-12 21:08:40.489 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.CommentMapper.selectByExample  : ==>  Preparing: select id, parent_id, type, commentator, gmt_create, gmt_modified, like_count, content, comment_count from comment WHERE ( parent_id = ? and type = ? ) order by gmt_create desc 
-2020-04-12 21:08:40.489 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.CommentMapper.selectByExample  : ==> Parameters: 20(Long), 1(Integer)
-2020-04-12 21:08:40.490 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.CommentMapper.selectByExample  : <==      Total: 4
-2020-04-12 21:08:40.492 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByExample     : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user WHERE ( id in ( ? , ? ) ) 
-2020-04-12 21:08:40.493 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByExample     : ==> Parameters: 1(Long), 2(Long)
-2020-04-12 21:08:40.494 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByExample     : <==      Total: 2
-2020-04-12 21:08:40.495 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.QuestionExtMapper.incView      : ==>  Preparing: update question set view_count =view_count + ? where id =? 
-2020-04-12 21:08:40.495 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.QuestionExtMapper.incView      : ==> Parameters: 1(Integer), 20(Long)
-2020-04-12 21:08:40.499 DEBUG 7944 --- [http-nio-8887-exec-1] l.m.c.c.m.QuestionExtMapper.incView      : <==    Updates: 1
-2020-04-12 21:08:41.755 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.CommentMapper.selectByExample  : ==>  Preparing: select id, parent_id, type, commentator, gmt_create, gmt_modified, like_count, content, comment_count from comment WHERE ( parent_id = ? and type = ? ) order by gmt_create desc 
-2020-04-12 21:08:41.755 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.CommentMapper.selectByExample  : ==> Parameters: 15(Long), 2(Integer)
-2020-04-12 21:08:41.757 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.CommentMapper.selectByExample  : <==      Total: 1
-2020-04-12 21:08:41.758 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.UserMapper.selectByExample     : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user WHERE ( id in ( ? ) ) 
-2020-04-12 21:08:41.758 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.UserMapper.selectByExample     : ==> Parameters: 2(Long)
-2020-04-12 21:08:41.759 DEBUG 7944 --- [http-nio-8887-exec-2] l.m.c.c.m.UserMapper.selectByExample     : <==      Total: 1
-2020-04-12 21:08:45.794 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.Q.countBySearch                : ==>  Preparing: select count(*) from QUESTION 
-2020-04-12 21:08:45.795 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.Q.countBySearch                : ==> Parameters: 
-2020-04-12 21:08:45.796 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.Q.countBySearch                : <==      Total: 1
-2020-04-12 21:08:45.797 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.Q.selectBySearch               : ==>  Preparing: select * from QUESTION order by gmt_create desc limit ?,? 
-2020-04-12 21:08:45.797 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.Q.selectBySearch               : ==> Parameters: 0(Integer), 5(Integer)
-2020-04-12 21:08:45.799 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.Q.selectBySearch               : <==      Total: 5
-2020-04-12 21:08:45.799 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
-2020-04-12 21:08:45.799 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
-2020-04-12 21:08:45.802 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
-2020-04-12 21:08:45.802 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
-2020-04-12 21:08:45.802 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
-2020-04-12 21:08:45.804 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
-2020-04-12 21:08:45.804 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
-2020-04-12 21:08:45.804 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
-2020-04-12 21:08:45.806 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
-2020-04-12 21:08:45.806 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
-2020-04-12 21:08:45.806 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
-2020-04-12 21:08:45.808 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
-2020-04-12 21:08:45.808 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
-2020-04-12 21:08:45.808 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
-2020-04-12 21:08:45.810 DEBUG 7944 --- [http-nio-8887-exec-4] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
-2020-04-12 21:08:55.800 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.Q.countBySearch                : ==>  Preparing: select count(*) from QUESTION 
-2020-04-12 21:08:55.800 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.Q.countBySearch                : ==> Parameters: 
-2020-04-12 21:08:55.807 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.Q.countBySearch                : <==      Total: 1
-2020-04-12 21:08:55.807 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.Q.selectBySearch               : ==>  Preparing: select * from QUESTION order by gmt_create desc limit ?,? 
-2020-04-12 21:08:55.808 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.Q.selectBySearch               : ==> Parameters: 0(Integer), 5(Integer)
-2020-04-12 21:08:55.809 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.Q.selectBySearch               : <==      Total: 5
-2020-04-12 21:08:55.810 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
-2020-04-12 21:08:55.810 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
-2020-04-12 21:08:55.811 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
-2020-04-12 21:08:55.812 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
-2020-04-12 21:08:55.812 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
-2020-04-12 21:08:55.813 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
-2020-04-12 21:08:55.814 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
-2020-04-12 21:08:55.814 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
-2020-04-12 21:08:55.815 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
-2020-04-12 21:08:55.816 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
-2020-04-12 21:08:55.816 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
-2020-04-12 21:08:55.817 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
-2020-04-12 21:08:55.818 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
-2020-04-12 21:08:55.818 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
-2020-04-12 21:08:55.819 DEBUG 7944 --- [http-nio-8887-exec-8] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
+2020-04-16 21:07:46.448  INFO 1232 --- [restartedMain] l.m.c.community.CommunityApplication     : Starting CommunityApplication on DESKTOP-VBEC26N with PID 1232 (started by Administrator in H:\git project\myConmmunity)
+2020-04-16 21:07:46.479  INFO 1232 --- [restartedMain] l.m.c.community.CommunityApplication     : No active profile set, falling back to default profiles: default
+2020-04-16 21:07:46.595  INFO 1232 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-04-16 21:07:46.595  INFO 1232 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-04-16 21:07:47.585  INFO 1232 --- [restartedMain] c.a.n.client.identify.CredentialWatcher  : [] [] [] No credential found
+2020-04-16 21:07:49.931  WARN 1232 --- [restartedMain] c.e.AnnotationNacosPropertySourceBuilder : There is no content for NacosPropertySource from dataId[liumq-nacos-properties] , groupId[DEFAULT_GROUP] , properties[{accessKey=${nacos.access-key:}, clusterName=${nacos.cluster-name:}, contextPath=${nacos.context-path:}, encode=${nacos.encode:UTF-8}, endpoint=${nacos.endpoint:}, namespace=${nacos.namespace:}, secretKey=${nacos.secret-key:}, serverAddr=${nacos.server-addr:}}].
+2020-04-16 21:07:51.197  INFO 1232 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8887 (http)
+2020-04-16 21:07:51.209  INFO 1232 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-16 21:07:51.210  INFO 1232 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-16 21:07:51.285  INFO 1232 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-16 21:07:51.285  INFO 1232 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4689 ms
+2020-04-16 21:07:51.334  INFO 1232 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-16 21:07:56.409 ERROR 1232 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.8.0_181]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[na:1.8.0_181]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404) ~[mysql-connector-java-5.1.37.jar:5.1.37]
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:983) ~[mysql-connector-java-5.1.37.jar:5.1.37]
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:339) ~[mysql-connector-java-5.1.37.jar:5.1.37]
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2252) ~[mysql-connector-java-5.1.37.jar:5.1.37]
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2285) ~[mysql-connector-java-5.1.37.jar:5.1.37]
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2084) ~[mysql-connector-java-5.1.37.jar:5.1.37]
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:795) ~[mysql-connector-java-5.1.37.jar:5.1.37]
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:44) ~[mysql-connector-java-5.1.37.jar:5.1.37]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.8.0_181]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[na:1.8.0_181]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404) ~[mysql-connector-java-5.1.37.jar:5.1.37]
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:400) ~[mysql-connector-java-5.1.37.jar:5.1.37]
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:327) ~[mysql-connector-java-5.1.37.jar:5.1.37]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-3.4.2.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:354) ~[HikariCP-3.4.2.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202) ~[HikariCP-3.4.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:473) [HikariCP-3.4.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:554) [HikariCP-3.4.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115) [HikariCP-3.4.2.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) [HikariCP-3.4.2.jar:na]
+	at org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.lambda$h2Console$0(H2ConsoleAutoConfiguration.java:73) [spring-boot-autoconfigure-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.beans.factory.ObjectProvider.ifAvailable(ObjectProvider.java:93) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.h2Console(H2ConsoleAutoConfiguration.java:72) [spring-boot-autoconfigure-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:651) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:211) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:202) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addServletContextInitializerBeans(ServletContextInitializerBeans.java:96) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:85) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:253) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:227) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:53) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5135) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1384) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1374) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[na:1.8.0_181]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:134) ~[na:1.8.0_181]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:909) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:841) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1384) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1374) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[na:1.8.0_181]
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:134) ~[na:1.8.0_181]
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:909) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:262) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:421) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:930) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:467) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:107) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:88) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:438) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:191) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:180) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:153) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:544) ~[spring-context-5.2.4.RELEASE.jar:5.2.4.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at life.majiang.community.community.CommunityApplication.main(CommunityApplication.java:14) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method) ~[na:1.8.0_181]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85) ~[na:1.8.0_181]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_181]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_181]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_181]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[na:1.8.0_181]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_181]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_181]
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:214) ~[mysql-connector-java-5.1.37.jar:5.1.37]
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:298) ~[mysql-connector-java-5.1.37.jar:5.1.37]
+	... 86 common frames omitted
+
+2020-04-16 21:07:57.566  INFO 1232 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-04-16 21:07:57.590  INFO 1232 --- [restartedMain] .LoggingNacosConfigMetadataEventListener : Nacos Config Metadata : dataId='liumq-nacos-properties', groupId='DEFAULT_GROUP', beanName='communityApplication', bean='null', beanType='class life.majiang.community.community.CommunityApplication', annotatedElement='null', xmlResource='null', nacosProperties='{serverAddr=http://localhost:8848, encode=UTF-8}', nacosPropertiesAttributes='{accessKey=${nacos.access-key:}, clusterName=${nacos.cluster-name:}, contextPath=${nacos.context-path:}, encode=${nacos.encode:UTF-8}, endpoint=${nacos.endpoint:}, namespace=${nacos.namespace:}, secretKey=${nacos.secret-key:}, serverAddr=${nacos.server-addr:}}', source='org.springframework.core.type.StandardAnnotationMetadata@40b18f63', timestamp='1587042469963'
+2020-04-16 21:07:57.602  INFO 1232 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-16 21:07:57.634  INFO 1232 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8887 (http) with context path ''
+2020-04-16 21:07:57.637  INFO 1232 --- [restartedMain] l.m.c.community.CommunityApplication     : Started CommunityApplication in 11.63 seconds (JVM running for 12.773)
+2020-04-16 21:08:25.403  INFO 17208 --- [restartedMain] l.m.c.community.CommunityApplication     : Starting CommunityApplication on DESKTOP-VBEC26N with PID 17208 (started by Administrator in H:\git project\myConmmunity)
+2020-04-16 21:08:25.406  INFO 17208 --- [restartedMain] l.m.c.community.CommunityApplication     : No active profile set, falling back to default profiles: default
+2020-04-16 21:08:25.475  INFO 17208 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-04-16 21:08:25.475  INFO 17208 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-04-16 21:08:26.014  INFO 17208 --- [restartedMain] c.a.n.client.identify.CredentialWatcher  : [] [] [] No credential found
+2020-04-16 21:08:28.307  WARN 17208 --- [restartedMain] c.e.AnnotationNacosPropertySourceBuilder : There is no content for NacosPropertySource from dataId[liumq-nacos-properties] , groupId[DEFAULT_GROUP] , properties[{accessKey=${nacos.access-key:}, clusterName=${nacos.cluster-name:}, contextPath=${nacos.context-path:}, encode=${nacos.encode:UTF-8}, endpoint=${nacos.endpoint:}, namespace=${nacos.namespace:}, secretKey=${nacos.secret-key:}, serverAddr=${nacos.server-addr:}}].
+2020-04-16 21:08:28.842  INFO 17208 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8887 (http)
+2020-04-16 21:08:28.849  INFO 17208 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-16 21:08:28.850  INFO 17208 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-16 21:08:28.926  INFO 17208 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-16 21:08:28.926  INFO 17208 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3451 ms
+2020-04-16 21:08:28.978  INFO 17208 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-16 21:08:29.123  INFO 17208 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-16 21:08:29.127  INFO 17208 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/community?serverTimezone=GMT%2b8&useUnicode=yes&characterEncoding=utf8'
+2020-04-16 21:08:30.024  INFO 17208 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-04-16 21:08:30.046  INFO 17208 --- [restartedMain] .LoggingNacosConfigMetadataEventListener : Nacos Config Metadata : dataId='liumq-nacos-properties', groupId='DEFAULT_GROUP', beanName='communityApplication', bean='null', beanType='class life.majiang.community.community.CommunityApplication', annotatedElement='null', xmlResource='null', nacosProperties='{serverAddr=http://localhost:8848, encode=UTF-8}', nacosPropertiesAttributes='{accessKey=${nacos.access-key:}, clusterName=${nacos.cluster-name:}, contextPath=${nacos.context-path:}, encode=${nacos.encode:UTF-8}, endpoint=${nacos.endpoint:}, namespace=${nacos.namespace:}, secretKey=${nacos.secret-key:}, serverAddr=${nacos.server-addr:}}', source='org.springframework.core.type.StandardAnnotationMetadata@5df59986', timestamp='1587042508308'
+2020-04-16 21:08:30.057  INFO 17208 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-16 21:08:30.086  INFO 17208 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8887 (http) with context path ''
+2020-04-16 21:08:30.088  INFO 17208 --- [restartedMain] l.m.c.community.CommunityApplication     : Started CommunityApplication in 5.082 seconds (JVM running for 5.943)
+2020-04-16 21:08:43.367  INFO 17208 --- [http-nio-8887-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-16 21:08:43.367  INFO 17208 --- [http-nio-8887-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-16 21:08:43.396  INFO 17208 --- [http-nio-8887-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 29 ms
+2020-04-16 21:08:43.470 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.Q.countBySearch                : ==>  Preparing: select count(*) from QUESTION 
+2020-04-16 21:08:43.485 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.Q.countBySearch                : ==> Parameters: 
+2020-04-16 21:08:43.498 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.Q.countBySearch                : <==      Total: 1
+2020-04-16 21:08:43.500 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.Q.selectBySearch               : ==>  Preparing: select * from QUESTION order by gmt_create desc limit ?,? 
+2020-04-16 21:08:43.500 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.Q.selectBySearch               : ==> Parameters: 0(Integer), 5(Integer)
+2020-04-16 21:08:43.505 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.Q.selectBySearch               : <==      Total: 5
+2020-04-16 21:08:43.506 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
+2020-04-16 21:08:43.506 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
+2020-04-16 21:08:43.510 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
+2020-04-16 21:08:43.513 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
+2020-04-16 21:08:43.513 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
+2020-04-16 21:08:43.515 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
+2020-04-16 21:08:43.516 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
+2020-04-16 21:08:43.516 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
+2020-04-16 21:08:43.518 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
+2020-04-16 21:08:43.518 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
+2020-04-16 21:08:43.518 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
+2020-04-16 21:08:43.521 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
+2020-04-16 21:08:43.521 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
+2020-04-16 21:08:43.521 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
+2020-04-16 21:08:43.524 DEBUG 17208 --- [http-nio-8887-exec-1] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
+2020-04-16 21:08:45.549 DEBUG 17208 --- [http-nio-8887-exec-9] l.m.c.c.m.Q.selectByPrimaryKey           : ==>  Preparing: select id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, tag , description from question where id = ? 
+2020-04-16 21:08:45.550 DEBUG 17208 --- [http-nio-8887-exec-9] l.m.c.c.m.Q.selectByPrimaryKey           : ==> Parameters: 20(Long)
+2020-04-16 21:08:45.553 DEBUG 17208 --- [http-nio-8887-exec-9] l.m.c.c.m.Q.selectByPrimaryKey           : <==      Total: 1
+2020-04-16 21:08:45.553 DEBUG 17208 --- [http-nio-8887-exec-9] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user where id = ? 
+2020-04-16 21:08:45.553 DEBUG 17208 --- [http-nio-8887-exec-9] l.m.c.c.m.UserMapper.selectByPrimaryKey  : ==> Parameters: 1(Long)
+2020-04-16 21:08:45.556 DEBUG 17208 --- [http-nio-8887-exec-9] l.m.c.c.m.UserMapper.selectByPrimaryKey  : <==      Total: 1
+2020-04-16 21:08:45.557 DEBUG 17208 --- [http-nio-8887-exec-9] l.m.c.c.m.Q.selectRelated                : ==>  Preparing: select * from QUESTION where id !=? and tag regexp ? 
+2020-04-16 21:08:45.557 DEBUG 17208 --- [http-nio-8887-exec-9] l.m.c.c.m.Q.selectRelated                : ==> Parameters: 20(Long), java(String)
+2020-04-16 21:08:45.563 DEBUG 17208 --- [http-nio-8887-exec-9] l.m.c.c.m.Q.selectRelated                : <==      Total: 10
+2020-04-16 21:08:45.583 DEBUG 17208 --- [http-nio-8887-exec-9] l.m.c.c.m.CommentMapper.selectByExample  : ==>  Preparing: select id, parent_id, type, commentator, gmt_create, gmt_modified, like_count, content, comment_count from comment WHERE ( parent_id = ? and type = ? ) order by gmt_create desc 
+2020-04-16 21:08:45.583 DEBUG 17208 --- [http-nio-8887-exec-9] l.m.c.c.m.CommentMapper.selectByExample  : ==> Parameters: 20(Long), 1(Integer)
+2020-04-16 21:08:45.589 DEBUG 17208 --- [http-nio-8887-exec-9] l.m.c.c.m.CommentMapper.selectByExample  : <==      Total: 4
+2020-04-16 21:08:45.593 DEBUG 17208 --- [http-nio-8887-exec-9] l.m.c.c.m.UserMapper.selectByExample     : ==>  Preparing: select id, name, account_id, token, gmt_create, gmt_modified, bio, avatar_url from user WHERE ( id in ( ? , ? ) ) 
+2020-04-16 21:08:45.593 DEBUG 17208 --- [http-nio-8887-exec-9] l.m.c.c.m.UserMapper.selectByExample     : ==> Parameters: 1(Long), 2(Long)
+2020-04-16 21:08:45.595 DEBUG 17208 --- [http-nio-8887-exec-9] l.m.c.c.m.UserMapper.selectByExample     : <==      Total: 2
+2020-04-16 21:08:45.600 DEBUG 17208 --- [http-nio-8887-exec-9] l.m.c.c.m.QuestionExtMapper.incView      : ==>  Preparing: update question set view_count =view_count + ? where id =? 
+2020-04-16 21:08:45.601 DEBUG 17208 --- [http-nio-8887-exec-9] l.m.c.c.m.QuestionExtMapper.incView      : ==> Parameters: 1(Integer), 20(Long)
+2020-04-16 21:08:45.605 DEBUG 17208 --- [http-nio-8887-exec-9] l.m.c.c.m.QuestionExtMapper.incView      : <==    Updates: 1
+2020-04-16 21:10:11.447  INFO 21712 --- [restartedMain] l.m.c.community.CommunityApplication     : Starting CommunityApplication on DESKTOP-VBEC26N with PID 21712 (started by Administrator in H:\git project\myConmmunity)
+2020-04-16 21:10:11.450  INFO 21712 --- [restartedMain] l.m.c.community.CommunityApplication     : No active profile set, falling back to default profiles: default
+2020-04-16 21:10:11.514  INFO 21712 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-04-16 21:10:11.514  INFO 21712 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-04-16 21:10:12.133  INFO 21712 --- [restartedMain] c.a.n.client.identify.CredentialWatcher  : [] [] [] No credential found
+2020-04-16 21:10:14.426  WARN 21712 --- [restartedMain] c.e.AnnotationNacosPropertySourceBuilder : There is no content for NacosPropertySource from dataId[liumq-nacos-properties] , groupId[DEFAULT_GROUP] , properties[{accessKey=${nacos.access-key:}, clusterName=${nacos.cluster-name:}, contextPath=${nacos.context-path:}, encode=${nacos.encode:UTF-8}, endpoint=${nacos.endpoint:}, namespace=${nacos.namespace:}, secretKey=${nacos.secret-key:}, serverAddr=${nacos.server-addr:}}].
+2020-04-16 21:10:14.994  INFO 21712 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8887 (http)
+2020-04-16 21:10:15.001  INFO 21712 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-16 21:10:15.001  INFO 21712 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-16 21:10:15.078  INFO 21712 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-16 21:10:15.078  INFO 21712 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3563 ms
+2020-04-16 21:10:15.128  INFO 21712 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-16 21:10:15.268  INFO 21712 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-16 21:10:15.271  INFO 21712 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/community?serverTimezone=GMT%2b8&useUnicode=yes&characterEncoding=utf8'
+2020-04-16 21:10:16.182  INFO 21712 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-04-16 21:10:16.205  INFO 21712 --- [restartedMain] .LoggingNacosConfigMetadataEventListener : Nacos Config Metadata : dataId='liumq-nacos-properties', groupId='DEFAULT_GROUP', beanName='communityApplication', bean='null', beanType='class life.majiang.community.community.CommunityApplication', annotatedElement='null', xmlResource='null', nacosProperties='{serverAddr=http://localhost:8848, encode=UTF-8}', nacosPropertiesAttributes='{accessKey=${nacos.access-key:}, clusterName=${nacos.cluster-name:}, contextPath=${nacos.context-path:}, encode=${nacos.encode:UTF-8}, endpoint=${nacos.endpoint:}, namespace=${nacos.namespace:}, secretKey=${nacos.secret-key:}, serverAddr=${nacos.server-addr:}}', source='org.springframework.core.type.StandardAnnotationMetadata@341a7a38', timestamp='1587042614428'
+2020-04-16 21:10:16.216  INFO 21712 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-16 21:10:16.250  INFO 21712 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8887 (http) with context path ''
+2020-04-16 21:10:16.253  INFO 21712 --- [restartedMain] l.m.c.community.CommunityApplication     : Started CommunityApplication in 5.231 seconds (JVM running for 6.132)

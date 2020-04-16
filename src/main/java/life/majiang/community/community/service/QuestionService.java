@@ -1,5 +1,6 @@
 package life.majiang.community.community.service;
 
+import com.alibaba.nacos.api.config.annotation.NacosValue;
 import life.majiang.community.community.dto.PaginationDTO;
 import life.majiang.community.community.dto.QuestionDTO;
 import life.majiang.community.community.dto.QuestionQueryDTO;
@@ -16,7 +17,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class QuestionService implements QuestionServiceInter {
     @Autowired
     private UserMapper userMapper;
 
-    @Value("${image.url.match}")
+    @NacosValue(value = "${image.url.match}",autoRefreshed = true)
     private String urlMatch;
 
     /**
@@ -282,6 +282,7 @@ public class QuestionService implements QuestionServiceInter {
 
     /**
      * 处理页码和总数信息
+     *
      * @param totalCount
      * @param size
      * @param page
@@ -300,10 +301,9 @@ public class QuestionService implements QuestionServiceInter {
         }
         if (page < DEFAULT_CURRENT_PAGE) {
             pageInfo.setPage(DEFAULT_CURRENT_PAGE);
-        }
-        else if (page > pageInfo.getTotalPage()) {
+        } else if (page > pageInfo.getTotalPage()) {
             pageInfo.setPage(pageInfo.getTotalPage());
-        }else{
+        } else {
             pageInfo.setPage(page);
         }
         return pageInfo;

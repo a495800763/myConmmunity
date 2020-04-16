@@ -1,6 +1,6 @@
 package life.majiang.community.community.controller;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.alibaba.nacos.api.config.annotation.NacosValue;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/error")
 public class CustomizeErrorController implements ErrorController {
 
-    @Value("${error.path:/error}")
+    @NacosValue(value = "${error.path:/error}",autoRefreshed = true)
     private String path="/error";
 
     @Override
