@@ -308,9 +308,7 @@ public class QuestionService implements QuestionServiceInter {
         }
         return pageInfo;
     }
-
 }
-
 @Data
 class PageCountInfo {
     Integer totalPage;
