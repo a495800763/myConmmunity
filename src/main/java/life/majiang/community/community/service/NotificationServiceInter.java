@@ -13,8 +13,8 @@ import life.majiang.community.community.model.User;
 public interface NotificationServiceInter {
     PaginationDTO list(Long userId, Integer page, Integer size);
 
-    public Long unreadCount(Long id);
+    Long unreadCount(Long id);
 
-    public NotificationDTO read(Long id, User user);
+    NotificationDTO read(Long id, User user);
 
 }
