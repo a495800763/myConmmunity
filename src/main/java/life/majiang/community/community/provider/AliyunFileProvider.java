@@ -23,7 +23,9 @@ import java.util.Date;
  **/
 @Component
 public class AliyunFileProvider {
-    //外网访问地域节点
+    /**
+     * 外网访问地域节点
+     */
     @NacosValue("${aliyun.oss.endpoint}")
     private String endpoint;
     //你的accessKeyId

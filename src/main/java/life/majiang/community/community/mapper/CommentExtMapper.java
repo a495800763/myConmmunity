@@ -10,5 +10,10 @@ import life.majiang.community.community.model.Comment;
  **/
 public interface CommentExtMapper {
 
+    /**
+     * 增加评论数
+     * @param record
+     * @return
+     */
     Integer incComment (Comment record);
 }
