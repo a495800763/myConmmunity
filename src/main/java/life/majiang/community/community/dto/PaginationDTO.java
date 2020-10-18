@@ -8,10 +8,10 @@ import java.util.List;
 @Data
 public class PaginationDTO<T> {
     private List<T> data;
-    private boolean showPrevious;
-    private boolean showFirstPage;
-    private boolean showNext;
-    private boolean showEndPage;
+    private Boolean showPrevious;
+    private Boolean showFirstPage;
+    private Boolean showNext;
+    private Boolean showEndPage;
     private Integer page;
     private List<Integer> pages = new ArrayList<>(0);
     private Integer totalPage;

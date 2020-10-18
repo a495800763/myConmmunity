@@ -107,7 +107,7 @@ public class NotificationService implements  NotificationServiceInter {
         if (notification == null) {
             throw new CustomizeException(CustomizeErrorCode.NOTIFICATION_NOT_FOUND);
         }
-        if (notification.getReceiver() != user.getId()) {
+        if (!notification.getReceiver() .equals(user.getId())) {
             throw new CustomizeException(CustomizeErrorCode.READ_NOTIFICATION_FAILD);
         }
 

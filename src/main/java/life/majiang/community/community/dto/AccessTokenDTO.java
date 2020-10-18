@@ -2,6 +2,9 @@ package life.majiang.community.community.dto;
 
 import lombok.Data;
 
+/**
+ * @author liumengqi
+ */
 @Data
 public class AccessTokenDTO {
     private String client_id;

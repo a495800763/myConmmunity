@@ -7,7 +7,10 @@ package life.majiang.community.community.enums;
  * @create: 2020-04-01 10:08
  **/
 public enum NotificationStatusEnum {
-    UNREAD(0), READ(1);
+    //未读
+    UNREAD(0),
+    //已读
+    READ(1);
 
     private int status;
 

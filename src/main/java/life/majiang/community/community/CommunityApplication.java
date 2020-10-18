@@ -8,6 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
+/**
+ * @author liumengqi
+ */
 @SpringBootApplication
 @MapperScan("life.majiang.community.community.mapper")
 @NacosPropertySource(dataId = "liumq-nacos-properties", autoRefreshed = true)
