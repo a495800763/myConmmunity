@@ -1,6 +1,9 @@
 package life.majiang.community.community.aspect;
 
+import life.majiang.community.community.util.DateTimeUtil;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -13,6 +16,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 
 /**
  * 使用切面实现的日志类
@@ -35,4 +39,16 @@ public class WebLogAspect {
         logger.info("==========HTTP_MOTHOD:" + request.getMethod());
         logger.info("==========IP:" + request.getRemoteAddr());
     }
+
+//    @Around("conreollerLog()")
+//    public void LoggerTime(ProceedingJoinPoint proceedingJoinPoint) {
+//        try {
+//            LocalDateTime start = LocalDateTime.now();
+//            proceedingJoinPoint.proceed();
+//            LocalDateTime end = LocalDateTime.now();
+//            logger.info(DateTimeUtil.getTimeDuration(start, end));
+//        } catch (Throwable throwable) {
+//            throwable.printStackTrace();
+//        }
+//    }
 }
